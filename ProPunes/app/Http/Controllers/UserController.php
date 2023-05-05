@@ -29,5 +29,29 @@ class UserController extends Controller
             return back()->with('error', 'Something went wrong');
         }
     }
-
+    public function edit($id)
+    {
+        $user = User::find($id);
+    
+        return view('users.update', ['user' => $user]);
+    }
+    
+    public function update(Request $request, $id) {
+        $user = User::findOrFail($id);
+        if ($user) {
+            $user->id = $request->id;
+            $user->email = $request->email;
+            $user->name = $request->name;
+            $user->surname = $request->surname;
+            $user->password = $request->password;
+            $user->role = $request->role;
+            if ($user->save()) {
+                return redirect()->route('users.index')->with('success', 'User updated successfully');
+            } else {
+                return back()->with('error', 'Something went wrong');
+            }
+        } else {
+            return back()->with('error', 'User not found');
+        }
+    }
 }

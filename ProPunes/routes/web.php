@@ -18,5 +18,9 @@ Route::get('/', function () {
     return view('register');
 });
 
-Route::prefix('users')->name('users.')->group(function(){
-    Route::get('/', [UserController::class, 'index'])->name('index');});
+Route::prefix('users')->name('users.')->group(function() {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::post('/create', [UserController::class, 'create'])->name('create');
+    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
+});
