@@ -54,4 +54,13 @@ class UserController extends Controller
             return back()->with('error', 'User not found');
         }
     }
+    public function delete($id)
+{
+    $user = User::findOrFail($id);
+    if ($user->delete()) {
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+    } else {
+        return back()->with('error', 'Something went wrong');
+    }
+}
 }
