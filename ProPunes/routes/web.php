@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KoltrolliAplikimeve;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,6 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::post('/create', [UserController::class, 'create'])->name('create');
     Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
     Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
+    
 });
+Route::resource('aplikimet', KoltrolliAplikimeve::class);
