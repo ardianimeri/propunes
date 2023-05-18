@@ -16,7 +16,7 @@ use App\Http\Controllers\KoltrolliAplikimeve;
 */
 
 Route::get('/', function () {
-    return view('register');
+    return view('auth.register');
 });
 
 Route::prefix('users')->name('users.')->group(function() {
@@ -27,3 +27,13 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::delete('/{id}', [UserController::class, 'delete'])->name('delete');
 });
 Route::resource('aplikimet', KoltrolliAplikimeve::class);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
