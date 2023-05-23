@@ -16,7 +16,7 @@ use App\Http\Controllers\KoltrolliAplikimeve;
 */
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('homepage');
 });
 
 Route::prefix('users')->name('users.')->group(function() {
@@ -33,7 +33,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/homepage', function () {
+        return view('homepage');
+    })->name('homepage');
 });

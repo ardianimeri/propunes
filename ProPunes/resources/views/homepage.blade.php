@@ -217,9 +217,22 @@ button {
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#jobs">Jobs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#login">Log In</a>
-                    </li>
+                    @if (Route::has('login'))
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                            </li>
+                        @else 
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ url('/login') }}">Log in</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{ url('/register') }}">Register</a>
+                                </li>
+                            @endif
+                        @endauth
+                    @endif
                 </ul>
             </div>
         </div>
