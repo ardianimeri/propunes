@@ -206,16 +206,16 @@ button {
                         <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#about">About</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url('/Aplikimet/read') }}">About</a>
                     </li>
                     <li class="nav-item">
-						<a class="nav-link" href="#services">Services</a>
+						<a class="nav-link" href="{{ url('/Aplikimet/create') }}">Services</a>
 					</li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#jobs">Jobs</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('aplikimet.store') }}">Jobs</a>
                     </li>
                     @if (Route::has('login'))
                         @auth

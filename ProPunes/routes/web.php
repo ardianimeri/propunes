@@ -37,3 +37,12 @@ Route::middleware([
         return view('homepage');
     })->name('homepage');
 });
+Route::get('/Aplikimet/index', function () {
+    return view('Aplikimet.index');
+});
+Route::get('/Aplikimet/create', function () {
+    return view('Aplikimet.create');
+});
+Route::get('/Aplikimet/show', function () {
+    return view('Aplikimet.show');
+});

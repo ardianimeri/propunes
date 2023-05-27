@@ -50,7 +50,7 @@ class KoltrolliAplikimeve extends Controller
      */
     public function show(Aplikimi $aplikimi)
     {
-        //
+        return view('aplikimet.show', compact('aplikimi'));
     }
 
     /**

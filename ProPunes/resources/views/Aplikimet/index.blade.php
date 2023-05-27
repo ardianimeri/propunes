@@ -113,18 +113,18 @@
 <div class="container-text-center">
     <div class="roww">
       <div class="col">
-        Prej database
+        
       </div>
       </div>
       </div>
       @foreach ($aplikimet as $aplikimi)
           
       
-  <div class="container-text-center" style="border: solid 1px black; margin: 5px">
+  <div class="container-text-center" style="border: solid 1px black; margin: 5px" >
      <div class="roww">
         <div class="col">
-            <h3>{{ $aplikimi->Titulli }}</h3>
-            <h4>{{ $aplikimi->Lokacioni }}</h4  >
+            <a href="{{url('/Aplikimet/show')}}">{{ $aplikimi->Titulli }}</a>
+            <h4>{{ $aplikimi->Lokacioni }}</h4 >
 
         </div>
       </div>
