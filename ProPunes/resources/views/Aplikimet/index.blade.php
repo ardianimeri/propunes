@@ -48,8 +48,9 @@
             background: #fff;
         }
         @media only screen and (max-width: 767px) {
-        .navbar-nav {
-            text-align: center;
+            .navbar-nav {
+                text-align: center;
+            }
         }
 </style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">

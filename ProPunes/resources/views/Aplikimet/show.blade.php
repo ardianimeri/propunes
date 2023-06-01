@@ -7,6 +7,11 @@
         * {
             font-family: 'Montserrat', sans-serif;
         }
+
+        body{
+            background-color: #E7F3FF;
+        }
+
         .navbar .getstarted {
             max-width: 100%;
             background: #106eea;
@@ -49,8 +54,48 @@
             background: #fff;
         }
         @media only screen and (max-width: 767px) {
-        .navbar-nav {
+            .navbar-nav {
+                text-align: center;
+            }
+        }
+         .contenti{
+        margin-top: 10%;
+        display: flex;
+        }
+        .posti{
+            background-color: #fff;
+            margin-right: 1%;
+            border: 1px solid black;
+        }
+        .tani{
+            border: 1px solid black;
+            border-radius: 5%;
+            width: 100%;
             text-align: center;
+            color: #fff;
+            padding: 2%;
+            background-color: #516685;
+        }
+        .ruaj{
+            margin-top: 10%;
+            border: 1px solid black;
+            border-radius: 5%;
+            width: 100%;
+            text-align: center;
+            color: #516685;
+            padding: 2%;
+        }
+        .apliko{
+            width: 100%
+        }
+        .details{
+            display: flex;  
+            margin: 0px 40px 0px 40px;
+            justify-content: space-between;
+        }
+        .details a{
+            color: #000;
+            text-decoration: none;
         }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -90,7 +135,6 @@
     <div class="posti">
         
             
-        @endforeach
         <div class="titulli">
             <h2>{{ $aplikimi->Titulli }}</h2>
         </div>
@@ -119,52 +163,6 @@
     </div>
 
 </div>
-
-<style>
-    body{
-        background-color: #E7F3FF;
-    }
-    .contenti{
-        margin-top: 10%;
-        display: flex;
-    }
-    .posti{
-        background-color: #fff;
-        margin-right: 1%;
-        border: 1px solid black;
-    }
-    .tani{
-        border: 1px solid black;
-        border-radius: 5%;
-        width: 100%;
-        text-align: center;
-        color: #fff;
-        padding: 2%;
-        background-color: #516685;
-    }
-    .ruaj{
-        margin-top: 10%;
-        border: 1px solid black;
-        border-radius: 5%;
-        width: 100%;
-        text-align: center;
-        color: #516685;
-        padding: 2%;
-    }
-    .apliko{
-        width: 100%
-    }
-    .details{
-        display: flex;  
-        margin: 0px 40px 0px 40px;
-        justify-content: space-between;
-    }
-    .details a{
-        color: #000;
-        text-decoration: none;
-    }
-    
-</style>
 
 
 

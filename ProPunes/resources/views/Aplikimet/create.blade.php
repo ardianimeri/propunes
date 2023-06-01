@@ -49,8 +49,9 @@
         }
         
         @media only screen and (max-width: 767px) {
-        .navbar-nav {
-            text-align: center;
+            .navbar-nav {
+                text-align: center;
+            }
         }
 
 }
