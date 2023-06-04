@@ -52,9 +52,31 @@
                             @endif
                         @endauth
                     @endif
+                    <li class="nav-item">
+                    <div class="dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+                            @if(Auth::check()) 
+                                {{Auth::user()->name}}
+                            @else
+                                Guest
+                            @endif
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                            <button type="submit" class="dropdown-item btn" @click.prevent="$root.submit();">Logout
+                            </button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </li>
                 </ul>
             </div>
-        </div>
     </nav>
     @yield('content')
     
