@@ -10,6 +10,11 @@
             @csrf
 
             <div>
+                <x-label for="id" value="{{ __('ID') }}" />
+                <x-input id="id" class="block mt-1 w-full" type="number" name="id" :value="old('id')" required autofocus autocomplete="id" />
+            </div>
+
+            <div class="mt-4">
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
@@ -27,6 +32,14 @@
             <div class="mt-4">
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="role" value="{{ __('Role') }}" />
+                <select id="role" name="role" class="block mt-1 w-full" required>
+                    <option value="punekerkues">Punëkërkues</option>
+                    <option value="punedhenes">Punëdhënës</option>
+                </select>
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
