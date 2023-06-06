@@ -16,6 +16,16 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('role');
+            $table->string('surname')->nullable();
+            $table->string('address')->nullable();
+            $table->text('bio')->nullable();
+            $table->integer('number')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('location')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('grade')->nullable();
+            $table->integer('experience')->nullable();
+            $table->integer('projects')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

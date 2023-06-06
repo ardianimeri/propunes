@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\JobPositionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KoltrolliAplikimeve;
+use App\Http\Livewire\User\JobsPositionProfile;
+use App\Http\Livewire\User\UserProfileComponent;
+use App\Models\JobsPosition;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,4 +49,13 @@ Route::get('/Aplikimet/create', function () {
 });
 Route::get('/Aplikimet/show', function () {
     return view('Aplikimet.show');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
+    Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
+});
+
+Route::get('/profile/show', function(){
+    return view('profile.show');
 });

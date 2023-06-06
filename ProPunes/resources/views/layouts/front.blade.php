@@ -8,7 +8,58 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     @yield('css')
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+.navbar .getstarted {
+    max-width: 100%;
+	background: #106eea;
+	margin-left: 30px;
+	border-radius: 4px;
+	font-weight: 400;
+	color: #fff;
+	text-decoration: none;
+	padding: .5rem 1rem;
+	line-height: 2.3;
+}
+.navbar-nav a {
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+.navbar-light .navbar-brand {
+	color: #000;
+	font-size: 25px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link {
+	color: #000;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+	color: #000;
+}
+.w-100 {
+	height: 100vh;
+}
+.navbar-toggler {
+	padding: 1px 5px;
+	font-size: 18px;
+	line-height: 0.3;
+	background: #fff;
+}
 
+.leftside, .rightside{
+    height:50vh;
+    width: 100%;
+}
+</style>
 </head>
   <body>
 
@@ -64,7 +115,7 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a>
+                            <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 

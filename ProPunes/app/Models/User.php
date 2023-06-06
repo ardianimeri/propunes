@@ -29,6 +29,16 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'surname',
+        'address',
+        'bio',
+        'number',
+        'age',
+        'location',
+        'profession',
+        'grade',
+        'experience',
+        'projects',
     ];
 
     /**
@@ -60,4 +70,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function jobposition(){
+        return $this->hasMany(JobsPosition::class, 'user_id');
+    }
 }

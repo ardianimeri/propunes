@@ -58,7 +58,66 @@
             <x-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-input-error for="name" class="mt-2" />
         </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="surname" value="{{ __('Surname') }}" />
+            <x-input id="surname" type="text" class="mt-1 block w-full" wire:model.defer="state.surname" autocomplete="surname" />
+            <x-input-error for="surname" class="mt-2" />
+        </div>
 
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="age" value="{{ __('Age') }}" />
+            <x-input id="age" type="number" class="mt-1 block w-full" wire:model.defer="state.age" autocomplete="age" />
+            <x-input-error for="age" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="address" value="{{ __('Address') }}" />
+            <x-input id="address" type="text" class="mt-1 block w-full" wire:model.defer="state.address" autocomplete="address" />
+            <x-input-error for="address" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="bio" value="{{ __('Bio') }}" />
+            <x-input id="bio" type="text" class="mt-1 block w-full" wire:model.defer="state.bio" autocomplete="bio" />
+            <x-input-error for="bio" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="location" value="{{ __('Location') }}" />
+            <x-input id="location" type="text" class="mt-1 block w-full" wire:model.defer="state.location" autocomplete="location" />
+            <x-input-error for="location" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="number" value="{{ __('Number') }}" />
+            <x-input id="number" type="number" class="mt-1 block w-full" wire:model.defer="state.number" autocomplete="number" />
+            <x-input-error for="number" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="profession" value="{{ __('Profession') }}" />
+            <x-input id="profession" type="text" class="mt-1 block w-full" wire:model.defer="state.profession" autocomplete="profession" />
+            <x-input-error for="profession" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="experience" value="{{ __('Experience') }}" />
+            <x-input id="experience" type="number" class="mt-1 block w-full" wire:model.defer="state.experience" autocomplete="excperience" />
+            <x-input-error for="experience" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="grade" value="{{ __('Grade') }}" />
+            <x-input id="grade" type="text" class="mt-1 block w-full" wire:model.defer="state.grade" autocomplete="grade" />
+            <x-input-error for="grade" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="projects" value="{{ __('Projects') }}" />
+            <x-input id="projects" type="number" class="mt-1 block w-full" wire:model.defer="state.projects" autocomplete="projects" />
+            <x-input-error for="projects" class="mt-2" />
+        </div>
+    
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="email" value="{{ __('Email') }}" />
@@ -80,6 +139,16 @@
                     </p>
                 @endif
             @endif
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="role" :value="__('Role')" />
+            <select id="role" name="role" class="mt-1 block w-full" wire:model.defer="state.role" autocomplete="role">
+                <option value="punedhenes">Punedhenes</option>
+                <option value="punekerkues">Punekerkues</option>
+            </select>
+            @error('role')
+                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
         </div>
     </x-slot>
 
