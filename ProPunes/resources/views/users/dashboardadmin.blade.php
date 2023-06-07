@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'Profile')
+@section('title', 'AdminDash')
 
 @section('content')
 
