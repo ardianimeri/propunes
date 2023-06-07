@@ -50,6 +50,10 @@ Route::get('/Aplikimet/create', function () {
 Route::get('/Aplikimet/show', function () {
     return view('Aplikimet.show');
 });
+Route::get('/users/dashboardemployee', function () {
+    return view('users.dashboardemployee');
+});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
