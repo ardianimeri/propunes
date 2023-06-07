@@ -63,3 +63,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 Route::get('/profile/show', function(){
     return view('profile.show');
 });
+Route::get('/search', 'App\Http\Controllers\KoltrolliAplikimeve@search');
+
