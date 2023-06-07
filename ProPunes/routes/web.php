@@ -53,7 +53,9 @@ Route::get('/Aplikimet/show', function () {
 Route::get('/users/dashboardemployee', function () {
     return view('users.dashboardemployee');
 });
-
+Route::get('/users/dashboardadmin', function () {
+    return view('users.dashboardadmin');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
