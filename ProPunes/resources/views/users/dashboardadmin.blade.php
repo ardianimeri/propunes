@@ -47,68 +47,22 @@
                             <th scope="col">ID</th>
                             <th scope="col">Emri</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Vendi</th>
+                            <th scope="col">Roli</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
-                        <tr>
-                            <td>1949445386</td>
-                            <td>Emri 1</td>
-                            <td>emrimbiemri@gmail.com</td>
-                            <td>Ferizaj</td>
-                            <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
-                            <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                        </tr>
+                        @foreach($users as $user)
+                            <tr>
+                                <td>{{$user->id}}</td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td>{{$user->role}}</td>
+                                <td><a class="btn btn-dark bg-success border-0" href="#" role="button">Përditso</a></td>
+                                <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -123,7 +77,6 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Emri Kompanis</th>
-                            <th scope="col">Përdoruesi</th>
                             <th scope="col">Vendi</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -131,63 +84,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Emri Kompanis 1</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Emri Kompanis 2</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Emri Kompanis 3</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Emri Kompanis 3</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Emri Kompanis 3</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-
-                    <tr>
-                        <td>6</td>
-                        <td>Emri Kompanis 3</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Emri Kompanis 3</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>Emri Kompanis 3</td>
-                        <td>Emri 1</td>
-                        <td>Ferizaj</td>
-                        <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
-                    </tr>
+                        @foreach($aplikimet as $aplikimi)
+                            <tr>
+                                <td>{{$aplikimi->ID_P}}</td>
+                                <td>{{$aplikimi->Titulli}}</td>
+                                <td>{{$aplikimi->Lokacioni}}</td>
+                                <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
