@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\JobPositionController;
+use App\Http\Controllers\JobsPositionrController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KoltrolliAplikimeve;
@@ -59,6 +59,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
 });
+Route::resource('jobposition', JobsPositionrController::class);
+
+Route::get('/jobposition/{id}/edit', 'JobPositionController@edit')->name('jobposition.edit');
 
 Route::get('/profile/show', function(){
     return view('profile.show');
