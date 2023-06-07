@@ -29,36 +29,22 @@
             <th scope="col">Data</th>
             <th scope="col">Vendi</th>
             <th scope="col">Pozita</th>
+            <td></td>           
           </tr>
         </thead>
         <tbody>
+          @foreach($aplikimet as $aplikimi)
           <tr>
             <th scope="row">1</th>
+            <td>{{$aplikimi->titulli}}</td>
+            <td>{{$aplikimi->pershkrimi}}</td>
+            <td>{{$aplikimi->ID_P}}</td>
             <td></td>
-            <td>20</td>
-            <td>28/05/2023</td>
-            <td>Ferizaj</td>
-            <td>Full Stack Web</td>
+            <td></td>
             <td><a class="btn btn-dark" href="#" role="button">Anulo</a></td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Kompania 2</td>
-            <td>20</td>
-            <td>28/05/2023</td>
-            <td>Ferizaj</td>
-            <td>Full Stack Web</td>
-            <td><a class="btn btn-dark" href="#" role="button">Anulo</a></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Kompania 3</td>
-            <td>20</td>
-            <td>28/05/2023</td>
-            <td>Ferizaj</td>
-            <td>Full Stack Web</td>
-            <td><a class="btn btn-dark" href="#" role="button">Anulo</a></td>
-          </tr>
+
+          @endforeach
         </tbody>
       </table>
     </div>

@@ -53,7 +53,8 @@ Route::get('/Aplikimet/show', function () {
     return view('Aplikimet.show');
 });
 Route::get('/users/dashboardemployee', function () {
-    return view('users.dashboardemployee');
+    $aplikimet = Aplikimi::all();
+    return view('users.dashboardemployee', [ 'aplikimet' => $aplikimet]);
 });
 Route::get('/users/dashboardadmin', function () {
     $users = User::all();
