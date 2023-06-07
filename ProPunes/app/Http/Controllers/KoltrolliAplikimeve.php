@@ -48,9 +48,10 @@ class KoltrolliAplikimeve extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Aplikimi $aplikimi)
+    public function show(Aplikimi $job)
     {
-        return view('aplikimet.show', compact('aplikimi'));
+        
+        return view('aplikimet.show', compact('job'));
     }
 
     /**
@@ -75,5 +76,11 @@ class KoltrolliAplikimeve extends Controller
     public function destroy(Aplikimi $aplikimi)
     {
         //
+    }
+    public function search(Request $request)
+    {
+       $search_text = $_GET['querry'];
+       $aplikimet = Aplikimi::where('Titulli' , 'LIKE', '%'.$search_text.'%')-> get();
+       return view('Aplikimet.search', compact('aplikimet'));
     }
 }

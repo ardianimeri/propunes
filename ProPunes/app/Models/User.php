@@ -74,4 +74,8 @@ class User extends Authenticatable
     public function jobposition(){
         return $this->hasMany(JobsPosition::class, 'user_id');
     }
+
+    public function aplikimet(){
+        return $this->hasMany(Aplikimi::class, 'user_id');
+    }
 }

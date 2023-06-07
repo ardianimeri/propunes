@@ -19,8 +19,14 @@ return new class extends Migration
             $table->string('Lokacioni');
             $table->string('Orari');
             $table->timestamps();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
+
+
+
+
 
     /**
      * Reverse the migrations.
@@ -29,4 +35,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('aplikimet');
     }
+
 };

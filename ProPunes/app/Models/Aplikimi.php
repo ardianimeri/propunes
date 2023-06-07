@@ -17,4 +17,5 @@ class Aplikimi extends Model
         'Lokacioni',
         'Orari'
     ];
+
 }
