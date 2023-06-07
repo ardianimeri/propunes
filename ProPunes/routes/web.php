@@ -7,6 +7,8 @@ use App\Http\Controllers\KoltrolliAplikimeve;
 use App\Http\Livewire\User\JobsPositionProfile;
 use App\Http\Livewire\User\UserProfileComponent;
 use App\Models\JobsPosition;
+use App\Models\User;
+use App\Models\Aplikimi;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +55,11 @@ Route::get('/Aplikimet/show', function () {
 Route::get('/users/dashboardemployee', function () {
     return view('users.dashboardemployee');
 });
-
+Route::get('/users/dashboardadmin', function () {
+    $users = User::all();
+    $aplikimet = Aplikimi::all();
+    return view('users.dashboardadmin', ['users' => $users, 'aplikimet' => $aplikimet]);
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
