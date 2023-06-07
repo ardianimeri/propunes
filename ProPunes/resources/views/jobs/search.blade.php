@@ -1,4 +1,4 @@
-@extends('Aplikimet.layout')
+@extends('layouts.front')
 
 @section('content')
     <div class="container-text-center">
@@ -8,12 +8,12 @@
             </div>
         </div>
     </div>
-    @foreach ($aplikimet as $aplikimi)
-        <div class="container-text-center" style="border: solid 1px black; margin: 5px">
+    @foreach ($jobs as $job)
+        <div class="container-text-center" style="border: solid 1px black; margin-top: 100px" >
             <div class="roww">
                 <div class="col">
-                    <a href="{{ url('/Aplikimet/show') }}">{{ $aplikimi->Titulli }}</a>
-                    <h4>{{ $aplikimi->Lokacioni }}</h4>
+                    <a href="{{ url('/jobs/show') }}">{{ $job->Titulli }}</a>
+                    <h4>{{ $job->Lokacioni }}</h4>
 
                 </div>
             </div>

@@ -3,12 +3,12 @@
 use App\Http\Controllers\JobsPositionrController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\KoltrolliAplikimeve;
+use App\Http\Controllers\JobController;
 use App\Http\Livewire\User\JobsPositionProfile;
 use App\Http\Livewire\User\UserProfileComponent;
 use App\Models\JobsPosition;
 use App\Models\User;
-use App\Models\Aplikimi;
+use App\Models\Job;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +32,7 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
     Route::delete('/{id}', [UserController::class, 'delete'])->name('delete');
 });
-Route::resource('aplikimet', KoltrolliAplikimeve::class);
+Route::resource('jobs', JobController::class);
 
 Route::middleware([
     'auth:sanctum',
@@ -43,23 +43,23 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::get('/Aplikimet/index', function () {
-    return view('Aplikimet.index');
+Route::get('/jobs/index', function () {
+    return view('jobs.index');
 });
-Route::get('/Aplikimet/create', function () {
-    return view('Aplikimet.create');
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
 });
-Route::get('/Aplikimet/show', function () {
-    return view('Aplikimet.show');
+Route::get('/jobs/show', function () {
+    return view('jobs.show');
 });
 Route::get('/users/dashboardemployee', function () {
-    $aplikimet = Aplikimi::all();
-    return view('users.dashboardemployee', [ 'aplikimet' => $aplikimet]);
+    $jobs = Job::all();
+    return view('users.dashboardemployee', [ 'jobs' => $jobs]);
 });
 Route::get('/users/dashboardadmin', function () {
     $users = User::all();
-    $aplikimet = Aplikimi::all();
-    return view('users.dashboardadmin', ['users' => $users, 'aplikimet' => $aplikimet]);
+    $jobs = Job::all();
+    return view('users.dashboardadmin', ['users' => $users, 'jobs' => $jobs]);
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
@@ -73,5 +73,5 @@ Route::get('/jobposition/{id}/edit', 'JobPositionController@edit')->name('jobpos
 Route::get('/profile/show', function(){
     return view('profile.show');
 });
-Route::get('/search', 'App\Http\Controllers\KoltrolliAplikimeve@search');
+Route::get('/search', 'App\Http\Controllers\JobController@search');
 

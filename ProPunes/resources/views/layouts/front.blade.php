@@ -77,16 +77,16 @@
                         <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/Aplikimet/read') }}">About</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url('/jobs/read') }}">About</a>
                     </li>
                     <li class="nav-item">
-						<a class="nav-link" href="{{ url('/Aplikimet/create') }}">Services</a>
+						<a class="nav-link" href="{{ url('/jobs/create') }}">Services</a>
 					</li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('aplikimet.store') }}">Jobs</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('jobs.store') }}">Jobs</a>
                     </li>
                     @if (Route::has('login'))
                         @auth

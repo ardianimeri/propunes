@@ -33,12 +33,12 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($aplikimet as $aplikimi)
+          @foreach($jobs as $job)
           <tr>
             <th scope="row">1</th>
-            <td>{{$aplikimi->titulli}}</td>
-            <td>{{$aplikimi->pershkrimi}}</td>
-            <td>{{$aplikimi->ID_P}}</td>
+            <td>{{$job->titulli}}</td>
+            <td>{{$job->pershkrimi}}</td>
+            <td>{{$job->ID_P}}</td>
             <td></td>
             <td></td>
             <td><a class="btn btn-dark" href="#" role="button">Anulo</a></td>

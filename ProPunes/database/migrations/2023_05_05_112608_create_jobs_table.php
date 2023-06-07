@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aplikimet', function (Blueprint $table) {
-            $table->id('ID_P');
+        Schema::create('jobs', function (Blueprint $table) {
+            $table->id();
             $table->string('Titulli');
             $table->text('Pershkrimi');
             $table->string('Kategoria');
@@ -33,7 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('aplikimet');
+        Schema::dropIfExists('jobs');
     }
 
 };

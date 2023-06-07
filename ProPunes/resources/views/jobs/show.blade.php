@@ -1,11 +1,17 @@
-@extends('Aplikimet.layout')
+@extends('layouts.front')
 
 @section('content')
+
 <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
         * {
             font-family: 'Montserrat', sans-serif;
         }
+
+        body{
+            background-color: #E7F3FF;
+        }
+
         .navbar .getstarted {
             max-width: 100%;
             background: #106eea;
@@ -47,14 +53,52 @@
             line-height: 0.3;
             background: #fff;
         }
-        
         @media only screen and (max-width: 767px) {
             .navbar-nav {
                 text-align: center;
             }
         }
-
+         .contenti{
+        margin-top: 10%;
+        display: flex;
+        }
+        .posti{
+            background-color: #fff;
+            margin-right: 1%;
+            border: 1px solid black;
+        }
+        .tani{
+            border: 1px solid black;
+            border-radius: 5%;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            padding: 2%;
+            background-color: #516685;
+        }
+        .ruaj{
+            margin-top: 10%;
+            border: 1px solid black;
+            border-radius: 5%;
+            width: 100%;
+            text-align: center;
+            color: #516685;
+            padding: 2%;
+        }
+        .apliko{
+            width: 100%
+        }
+        .details{
+            display: flex;  
+            margin: 0px 40px 0px 40px;
+            justify-content: space-between;
+        }
+        .details a{
+            color: #000;
+            text-decoration: none;
+        }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -68,16 +112,16 @@
                         <a class="nav-link active" aria-current="page" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/Aplikimet/read') }}">About</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url('/jobs/read') }}">About</a>
                     </li>
                     <li class="nav-item">
-						<a class="nav-link" href="{{ url('/Aplikimet/create') }}">Services</a>
+						<a class="nav-link" href="{{ url('/jobs/create') }}">Services</a>
 					</li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('aplikimet.store') }}">Jobs</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('jobs.store') }}">Jobs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url('/login') }}">Log in</a>
@@ -87,95 +131,40 @@
         </div>
 </nav>
 
+<div class="contenti">
+    <div class="posti">
+        
+            
+        <div class="titulli">
+            <h2>{{ $job->Titulli }}</h2>
+        </div>
 
-<div class="row">
-    <div class="col-lg-12 margin-tb" style="display: flex; justify-content:space-between;">
-        <div class="pull-left">
-            <h2>Shto Aplikim</h2>
+        <div class="details">
+            <a href=""><i class="bi bi-clipboard"></i>{{ $job->Kategoria}} </a>
+            <a href=""><i class="bi bi-geo-alt-fill"></i>{{ $job->Lokacioni }}</a>
+            <a href=""><i class="bi bi-clock"></i>{{ $job->Orari }}</a>
+            <a href=""><i class="bi bi-calendar-week"></i>25.05.2023</a>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('aplikimet.index') }}">Back</a>
+       
+        <div class="description">
+            <h5>Job Description</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum blanditiis id aliquam numquam sequi sint deleniti iusto placeat deserunt illo perspiciatis, quos, eaque ullam eius labore vel sunt ratione repellat?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum earum neque adipisci mollitia dignissimos ullam ex unde at quaerat sapiente eaque veritatis pariatur inventore voluptatibus debitis minus numquam, hic accusamus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae aspernatur impedit maiores. Veritatis, nostrum dolor totam voluptatem, ut ratione quasi ipsum nihil iste dolores voluptates at autem fugiat sequi.</p>
         </div>
+
     </div>
-</div>
-
-
-
-
-  @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Opa!</strong>there was some problems.<br>
-            <ul>
-                @foreach ($errors->all() as $error )
-                    <li>{{ $error }}</li>
-                @endforeach
-        </div>      
-  @endif
-  <div class="shto">
-<form action="{{ route('aplikimet.store') }}" method="POST">
-    @csrf
-
     
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Titulli</strong>
-                <input type="text" name="Titulli" class="form-control" placeholder="titulli">
-            </div>
+    <div class="apliko">
+        <div class="tani">
+            <h5>Apliko tani</h5>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Pershkrimi</strong>
-                <textarea class="form-control" style="height: 150px" name="Pershkrimi" placeholder="pershkrimi"></textarea>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Kategoria</strong>
-                <input type="text" class="form-control"  name="Kategoria" placeholder="kategoria">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Lokacioni</strong>
-                <input type="text" class="form-control"  name="Lokacioni" placeholder="lokacioni">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Orari</strong>
-                <input type="text" class="form-control"  name="Orari" placeholder="orari">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="ruaj">
+            <h5>Ruaj aplikimin</h5>
         </div>
     </div>
 
-</form>
 </div>
-<style>
-    .shto{
-    width: 65%;
-    border: solid 1px black;
-    border-radius: 18px;
-    padding: 17px;
-    margin: auto;
-    height: 612px;
-    margin-top: 1%;
-    position: relative;
-}
-    .col-md-12{
-        margin: 1%;
-    }
-    .col-lg-12{
-    width: 63%;
-    margin-top: 4%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    margin-left: 18%;
-    }
-</style>
+
+
+
+
 @endsection

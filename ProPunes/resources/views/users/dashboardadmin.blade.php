@@ -84,11 +84,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($aplikimet as $aplikimi)
+                        @foreach($jobs as $job)
                             <tr>
-                                <td>{{$aplikimi->ID_P}}</td>
-                                <td>{{$aplikimi->Titulli}}</td>
-                                <td>{{$aplikimi->Lokacioni}}</td>
+                                <td>{{$job->ID_P}}</td>
+                                <td>{{$job->Titulli}}</td>
+                                <td>{{$job->Lokacioni}}</td>
                                 <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
                             </tr>
                         @endforeach

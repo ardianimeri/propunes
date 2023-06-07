@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aplikimi extends Model
+class Job extends Model
 {
     use HasFactory;
-    protected $table = 'aplikimet';
+    protected $table = 'jobs';
     protected $fillable = [
 
         'Titulli',
@@ -16,6 +16,7 @@ class Aplikimi extends Model
         'Kategoria',
         'Lokacioni',
         'Orari'
+        
     ];
 
 }
