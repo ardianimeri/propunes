@@ -9,6 +9,7 @@ use App\Http\Livewire\User\UserProfileComponent;
 use App\Models\JobsPosition;
 use App\Models\User;
 use App\Models\Job;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +40,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/user/profile', function () {
+        return view('user.profile');
+    })->name('user.profile');
 });
 Route::get('/jobs/index', function () {
     return view('jobs.index');
@@ -63,8 +64,10 @@ Route::get('/users/dashboardadmin', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::middleware(['role:punekerkues'])->group(function() {
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
+    });
 });
 Route::resource('jobposition', JobsPositionrController::class);
 
