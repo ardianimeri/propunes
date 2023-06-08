@@ -90,9 +90,13 @@
                     </li>
                     @if (Route::has('login'))
                         @auth
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ url('/dashboard') }}">Dashboard</a>
+                        @if(Auth::user()->role == 'punekerkues')
+                            <li class="nav-item" style="padding: 8px;">
+                                <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardemployee') }}">Dashboard</a>
+                            @elseif(Auth::user()->role == 'admin')
+                                <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardadmin') }}">Dashboard</a>
                             </li>
+                            @endif
                         @else 
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ url('/login') }}">Log in</a>
@@ -116,7 +120,16 @@
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
+                            @if (Route::has('login'))
+                            @auth
+                            @if(Auth::user()->role == 'punekerkues')
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
+                            @elseif(Auth::user()->role == 'punedhenes')
+                                <a class="dropdown-item" href="{{ route('user.profile-employer') }}">Profile</a>
+                            @endif
+                            @endauth
+                            @endif
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 

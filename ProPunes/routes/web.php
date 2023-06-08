@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
 use App\Http\Livewire\User\JobsPositionProfile;
 use App\Http\Livewire\User\UserProfileComponent;
+use App\Http\Livewire\User\UserProfileEmployer;
 use App\Models\JobsPosition;
 use App\Models\User;
 use App\Models\Job;
@@ -40,9 +41,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/user/profile', function () {
-        return view('user.profile');
-    })->name('user.profile');
+    Route::get('/', function () {
+        return view('homepage');
+    })->name('homepage');
 });
 Route::get('/jobs/index', function () {
     return view('jobs.index');
@@ -53,20 +54,27 @@ Route::get('/jobs/create', function () {
 Route::get('/jobs/show', function () {
     return view('jobs.show');
 });
-Route::get('/users/dashboardemployee', function () {
-    $jobs = Job::all();
-    return view('users.dashboardemployee', [ 'jobs' => $jobs]);
-});
-Route::get('/users/dashboardadmin', function () {
-    $users = User::all();
-    $jobs = Job::all();
-    return view('users.dashboardadmin', ['users' => $users, 'jobs' => $jobs]);
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::middleware(['role:punekerkues'])->group(function() {
+        Route::get('/users/dashboardemployee', function () {
+            $jobs = Job::all();
+            return view('users.dashboardemployee', [ 'jobs' => $jobs]);
+        })->name('users.dashboardemployee');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
+    });
+    Route::middleware(['role:admin'])->group(function() {
+        Route::get('/users/dashboardadmin', function () {
+            $users = User::all();
+            $jobs = Job::all();
+            return view('users.dashboardadmin', ['users' => $users, 'jobs' => $jobs]);
+        })->name('users.dashboardadmin');
+    });
+});
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::middleware(['role:punedhenes'])->group(function() {
+    Route::get('/user/profile-employer', UserProfileEmployer::class)->name('user.profile-employer');
     });
 });
 Route::resource('jobposition', JobsPositionrController::class);
