@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\JobsPositionrController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -56,10 +57,15 @@ Route::get('/jobs/show', function () {
     return view('jobs.show');
 });
 
+
+Route::resource('applications', ApplicationController::class);
+
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::middleware(['role:punekerkues'])->group(function() {
         Route::get('/users/dashboardemployee', function () {
-            $jobs = Job::all();
+            $user = Auth::user();
+            $jobs = Job::where('user_id', $user->id)->orderBy('id','desc')->get();
             return view('users.dashboardemployee', [ 'jobs' => $jobs]);
         })->name('users.dashboardemployee');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
