@@ -11,6 +11,7 @@ use App\Models\JobsPosition;
 use App\Models\User;
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +86,16 @@ Route::get('/profile/show', function(){
     return view('profile.show');
 });
 Route::get('/search', 'App\Http\Controllers\JobController@search');
+
+Route::get('/registeradmin', function(){
+    return view('auth.registeradmin');
+});
+
+Route::delete('/admin/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.user.delete');
+
+Route::post('/admin/users', [AdminController::class, 'storeAdmin'])->name('admin.users.store');
+
+Route::delete('/admin/jobs/{id}', [AdminController::class, 'deleteJob'])->name('admin.job.delete');
+
+
 
