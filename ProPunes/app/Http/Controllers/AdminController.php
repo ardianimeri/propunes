@@ -33,17 +33,21 @@ class AdminController extends Controller
     public function storeAdmin(Request $request)
     {
         $validatedData = $request->validate([
+            'id' => 'required|unique:users',
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'role' => 'required|in:admin',
         ]);
 
+
         $user = new User();
+        $user->id = $validatedData['id'];
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->password = bcrypt($validatedData['password']);
         $user->role = $validatedData['role'];
+        $idExists = User::where('id', $request->id)->exists();
         $user->save();
 
         return redirect()->route('users.dashboardadmin');
