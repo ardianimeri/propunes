@@ -14,34 +14,36 @@
 </head>
 <body>
     <div class="container" style="margin-top: 10%;">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page"><a href="#">Profile</a></li>
-          </nav>
         <div class="row">
     </div>
     <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Emri i Kompanise</th>
-            <th scope="col">Mosha</th>
-            <th scope="col">Data</th>
-            <th scope="col">Vendi</th>
-            <th scope="col">Pozita</th>
+            <th scope="col">Titulli</th>
+            <th scope="col">Pershkrimi</th>
+            <th scope="col">Kategoria</th>
+            
+            <th scope="col">Lokacioni</th>
+            <th scope="col">Orari</th>
             <td></td>           
           </tr>
         </thead>
         <tbody>
           @foreach($jobs as $job)
           <tr>
-            <th scope="row">1</th>
-            <td>{{$job->titulli}}</td>
-            <td>{{$job->pershkrimi}}</td>
-            <td>{{$job->ID_P}}</td>
-            <td></td>
-            <td></td>
-            <td><a class="btn btn-dark" href="#" role="button">Anulo</a></td>
+            <td>{{$job->id}}</td>
+            <td>{{$job->Titulli}}</td>
+            <td>{{$job->Pershkrimi}}</td>
+            <td>{{$job->Kategoria}}</td>
+            <td>{{$job->Lokacioni}}</td>
+            <td>{{$job->Orari}}</td>
+            <td><form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Anulo</button>
+            </form>
+</td>
           </tr>
 
           @endforeach

@@ -6,6 +6,7 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class JobController extends Controller
 {
@@ -17,7 +18,14 @@ class JobController extends Controller
         $jobs = Job::latest()->paginate(5);
         return view('jobs.index', compact('jobs'))->with(request()->input('page'));
     }
-
+    
+    //function for dashboardemployee
+    public function showjobs(){
+        $user = Auth::user();
+        //$jobs = Job::all();
+        $jobs = Job::where('user_id', $user->id)->orderBy('id','desc')->get();
+        return view('users.dashboardemployee', compact('user','jobs'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -79,9 +87,11 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Job $job)
+    public function destroy($id)
     {
-        //
+        $jobs = Job::findOrFail($id);
+        $jobs->delete();
+        return Redirect::back()->with('success', 'Aplikimi u anulua me sukses');  
     }
     public function search(Request $request)
     {
