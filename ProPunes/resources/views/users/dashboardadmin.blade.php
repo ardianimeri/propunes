@@ -86,7 +86,7 @@
                     <tbody>
                         @foreach($jobs as $job)
                             <tr>
-                                <td>{{$job->ID_P}}</td>
+                                <td>{{$job->id}}</td>
                                 <td>{{$job->Titulli}}</td>
                                 <td>{{$job->Lokacioni}}</td>
                                 <td><a class="btn btn-dark bg-danger border-0" href="#" role="button">Fshij</a></td>
