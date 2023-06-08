@@ -18,5 +18,7 @@ class Job extends Model
         'Orari'
         
     ];
-
+    public function users(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
