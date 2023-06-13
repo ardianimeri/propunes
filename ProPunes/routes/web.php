@@ -36,7 +36,6 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
     Route::delete('/{id}', [UserController::class, 'delete'])->name('delete');
 });
-Route::resource('jobs', JobController::class);
 
 Route::middleware([
     'auth:sanctum',
@@ -44,8 +43,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', function () {
-        return view('homepage');
-    })->name('homepage');
+        return view('');
+    })->name('dashboard');
 });
 Route::get('/jobs/index', function () {
     return view('jobs.index');
@@ -53,10 +52,12 @@ Route::get('/jobs/index', function () {
 Route::get('/jobs/create', function () {
     return view('jobs.create');
 });
-Route::get('/jobs/show', function () {
-    return view('jobs.show');
+Route::get('/jobs/show/{id}', function ($id) {
+    return view('jobs.show', compact('id'));
 });
 
+
+Route::resource('jobs', JobController::class);
 
 Route::resource('applications', ApplicationController::class);
 
@@ -86,7 +87,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 });
 Route::resource('jobposition', JobsPositionrController::class);
 
-Route::get('/jobposition/{id}/edit', 'JobPositionController@edit')->name('jobposition.edit');
 
 Route::get('/profile/show', function(){
     return view('profile.show');

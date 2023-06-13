@@ -127,7 +127,7 @@
             <div class="container-text-center" style="border: solid 1px black; margin: 5px">
                 <div class="roww">
                     <div class="col">
-                        <a href="{{ url('/jobs/show') }}">{{ $job->Titulli }}</a>
+                        <a href="{{ route('jobs.show', ['job' => $job->id]) }}">{{ $job->Titulli }}</a>
                         <h4>{{ $job->Lokacioni }}</h4>
 
                     </div>

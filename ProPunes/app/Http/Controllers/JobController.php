@@ -63,8 +63,9 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Job $job)
+    public function show($id)
     {
+        $job = Job::findOrFail($id);
         return view('jobs.show', compact('job'));
     }
 
