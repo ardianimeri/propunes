@@ -43,8 +43,8 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/', function () {
-        return view('');
-    })->name('dashboard');
+        return view('homepage');
+    })->name('homepage');
 });
 Route::get('/jobs/index', function () {
     return view('jobs.index');
