@@ -147,7 +147,7 @@
     
         
     
-    <div class="footer ">
+    <div class="footer">
 	<footer class="bg-light p-2 text-center">
 		<div class="container">
 			<p class="text-black">All Right Reserved By ©PROPUNES</p>

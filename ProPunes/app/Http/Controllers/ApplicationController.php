@@ -15,7 +15,7 @@ class ApplicationController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $jobs = $user->jobs()->get();
+        $jobs = $user->applications()->get();
     
         if ($jobs->isEmpty()) {
             // Handle case when the user is not associated with any jobs

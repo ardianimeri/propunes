@@ -30,7 +30,7 @@
         }
     </style>
 
-    <div class="container">
+    <div class="container" style="height:100vh;">
         <div class="row">
             <div class="col-lg-12 margin-tb" style="display: flex; justify-content: space-between; margin-top: 10%; ">
                 <div class="pull-left">
