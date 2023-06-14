@@ -64,7 +64,7 @@ Route::resource('jobs', JobController::class);
 Route::resource('lokacioni', LocationController::class);
 Route::resource('applications', ApplicationController::class);
 
-
+Route::delete('/applications/{id}/destroyApplications/{applicationId}', [ApplicationController::class, 'destroyApplications'])->name('applications.destroyApplications');
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::middleware(['role:punekerkues'])->group(function() {
         Route::get('/users/dashboardemployee', function () {
@@ -74,6 +74,24 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
         })->name('users.dashboardemployee');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
+    });
+    Route::middleware(['role:punedhenes'])->group(function(){
+        Route::get('/users/dashboardemployer', function () {
+            $user = Auth::user();
+            $jobs = $user->jobs()->get();
+            
+            $data = [];
+            foreach ($jobs as $job) {
+                $applicantsForJob = $job->applicants()->get();
+                $data[] = [
+                    'job' => $job,
+                    'applicants' => $applicantsForJob,
+                ];
+    }
+            
+            return view('users.dashboardemployer', ['data' => $data]);
+        })->name('users.dashboardemployer');
+        
     });
     Route::middleware(['role:admin'])->group(function() {
         Route::get('/users/dashboardadmin', function () {

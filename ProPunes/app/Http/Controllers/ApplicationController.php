@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -97,6 +98,13 @@ class ApplicationController extends Controller
     { 
         $applications = Job::findOrFail($id);
         $applications->applicants()->detach();
+        return Redirect::back()->with('success', 'Aplikimi u anulua me sukses');  
+    }
+
+    public function destroyApplications($id, $applicationId)
+    { 
+        $applications = User::findOrFail($id);
+        $applications->applications()->detach($applicationId);
         return Redirect::back()->with('success', 'Aplikimi u anulua me sukses');  
     }
 

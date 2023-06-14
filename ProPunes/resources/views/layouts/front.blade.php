@@ -95,6 +95,8 @@
                                 <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardemployee') }}">Dashboard</a>
                             @elseif(Auth::user()->role == 'admin')
                                 <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardadmin') }}">Dashboard</a>
+                            @elseif(Auth::user()->role == 'punedhenes')
+                                <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardemployer') }}">Dashboard</a>
                             </li>
                             @endif
                         @else 
