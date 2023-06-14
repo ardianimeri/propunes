@@ -30,15 +30,15 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($jobs as $job)
+          @foreach($applications as $application)
           <tr>
-            <td>{{$job->id}}</td>
-            <td>{{$job->Titulli}}</td>
-            <td>{{$job->Pershkrimi}}</td>
-            <td>{{$job->Kategoria}}</td>
-            <td>{{$job->Lokacioni}}</td>
-            <td>{{$job->Orari}}</td>
-            <td><form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display: inline-block;">
+            <td>{{$application->id}}</td>
+            <td>{{$application->Titulli}}</td>
+            <td>{{$application->Pershkrimi}}</td>
+            <td>{{$application->Kategoria}}</td>
+            <td>{{$application->Lokacioni}}</td>
+            <td>{{$application->Orari}}</td>
+            <td><form action="{{ route('applications.destroy', $application->id) }}" method="POST" style="display: inline-block;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Anulo</button>

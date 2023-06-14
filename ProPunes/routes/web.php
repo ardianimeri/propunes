@@ -57,6 +57,7 @@ Route::get('/jobs/create', function () {
 Route::get('/jobs/show/{id}', function ($id) {
     return view('jobs.show', compact('id'));
 });
+Route::get('/applications/application-show', 'App\Http\Controllers\ApplicationController@applications');
 
 
 Route::resource('jobs', JobController::class);
@@ -68,8 +69,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::middleware(['role:punekerkues'])->group(function() {
         Route::get('/users/dashboardemployee', function () {
             $user = Auth::user();
-            $jobs = Job::where('user_id', $user->id)->orderBy('id','desc')->get();
-            return view('users.dashboardemployee', [ 'jobs' => $jobs]);
+            $applications = $user->applications()->with('users')->get();
+            return view('users.dashboardemployee' , ['applications'=>$applications]);
         })->name('users.dashboardemployee');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
     Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
