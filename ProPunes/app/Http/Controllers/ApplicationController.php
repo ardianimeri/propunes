@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class ApplicationController extends Controller
 {
@@ -92,8 +94,10 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    { 
+        $applications = Job::findOrFail($id);
+        $applications->applicants()->detach();
+        return Redirect::back()->with('success', 'Aplikimi u anulua me sukses');  
     }
 
     public function applications(){
