@@ -5,12 +5,14 @@ use App\Http\Controllers\JobsPositionrController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\LocationController;
 use App\Http\Livewire\User\JobsPositionProfile;
 use App\Http\Livewire\User\UserProfileComponent;
 use App\Http\Livewire\User\UserProfileEmployer;
 use App\Models\JobsPosition;
 use App\Models\User;
 use App\Models\Job;
+use App\Models\Location;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 
@@ -58,7 +60,7 @@ Route::get('/jobs/show/{id}', function ($id) {
 
 
 Route::resource('jobs', JobController::class);
-
+Route::resource('lokacioni', LocationController::class);
 Route::resource('applications', ApplicationController::class);
 
 

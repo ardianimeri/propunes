@@ -41,16 +41,11 @@
 
         <div class="row" id="rows">
             <div class="col-2">
-                <div class="form-floating">
-                    <select id="select1" class="form-select">
-                        <option selected disabled>Lokacioni</option>
-                        <option>Prishtine</option>
-                        <option>Mitrovice</option>
-                        <option>Prizeren</option>
-                        <option>Peje</option>
-                        <option>Ferizaj</option>
-                        <option>Gjilan</option>
-                        <option>Gjakove</option>
+                <div class="form-floating">                    
+                    <select id="select1" class="form-select" name="">    
+                        @foreach ($data as $row)                    
+                            <option value="{{ $row->id }}">{{ $row->qyteti }}</option> 
+                        @endforeach                       
                     </select>
                 </div>
             </div>
