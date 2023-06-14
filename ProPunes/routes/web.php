@@ -55,6 +55,7 @@ Route::get('/jobs/create', function () {
 Route::get('/jobs/show/{id}', function ($id) {
     return view('jobs.show', compact('id'));
 });
+Route::get('/applications/application-show', 'App\Http\Controllers\ApplicationController@applications');
 
 
 Route::resource('jobs', JobController::class);

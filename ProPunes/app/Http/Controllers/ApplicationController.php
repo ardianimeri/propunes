@@ -95,4 +95,17 @@ class ApplicationController extends Controller
     {
         //
     }
+
+    public function applications(){
+    $user = auth()->user();
+
+    if (!$user) {
+        // Handle case when the user is not authenticated
+        return response()->json(['error' => 'Unauthenticated'], 401);
+    }
+
+    $applications = $user->applications()->with('user')->get();
+
+    return view('applications.application-show', compact('applications'));
+    }
 }
