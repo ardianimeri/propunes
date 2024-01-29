@@ -43,7 +43,7 @@
             <div class="col-2">
                 <div class="form-floating">                    
                     <select id="select1" class="form-select" name="">    
-                        @foreach ($data as $row)                    
+                        @foreach ($jobs as $row)                    
                             <option value="{{ $row->id }}">{{ $row->qyteti }}</option> 
                         @endforeach                       
                     </select>
