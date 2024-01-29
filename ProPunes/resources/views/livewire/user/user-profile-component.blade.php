@@ -521,7 +521,7 @@
                                 <p class="text-muted font-13 mb-0">{{ $position->description }}
                                 </p>
                                 <div>
-                                <!-- <a href="{{ route('jobposition.edit', ['id' => $position->id]) }}" class="btn btn-primary">Edit</a> -->
+
                                 <head>
     <meta name="user-id" content="{{ Auth::user()->id }}">
 
