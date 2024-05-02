@@ -91,12 +91,12 @@
                     @if (Route::has('login'))
                         @auth
                         @if(Auth::user()->role == 'punekerkues')
-                            <li class="nav-item" style="padding: 8px;">
-                                <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardemployee') }}">Dashboard</a>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ route('users.dashboardemployee') }}">Dashboard</a>
                             @elseif(Auth::user()->role == 'admin')
-                                <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardadmin') }}">Dashboard</a>
+                                <a class="nav-link" aria-current="page" href="{{ route('users.dashboardadmin') }}">Dashboard</a>
                             @elseif(Auth::user()->role == 'punedhenes')
-                                <a class="dropdown-item" aria-current="page" href="{{ route('users.dashboardemployer') }}">Dashboard</a>
+                                <a class="nav-link" aria-current="page" href="{{ route('users.dashboardemployer') }}">Dashboard</a>
                             </li>
                             @endif
                         @else 
