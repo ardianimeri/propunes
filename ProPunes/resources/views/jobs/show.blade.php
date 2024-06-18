@@ -85,14 +85,7 @@
         </div>
     </div>
     @elseif(Auth::user()->role == 'punedhenes')
-    <div class="apliko">
-        <div class="tani">
-            <a class="btn btn-success" href="{{ route('jobs.edit', ['job' => $job->id]) }}">Edit</a>
-        </div>
-        <div class="ruaj">
-            <h5>delete</h5>
-        </div>
-    </div>
+    
     @endif
 
 </div>
