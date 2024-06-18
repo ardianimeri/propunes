@@ -75,6 +75,7 @@
 
     </div>
     
+    @if(Auth::user()->role == 'punekerkues')
     <div class="apliko">
         <div class="tani">
             <h5>Apliko tani</h5>
@@ -83,6 +84,9 @@
             <h5>Ruaj aplikimin</h5>
         </div>
     </div>
+    @elseif(Auth::user()->role == 'punedhenes')
+    
+    @endif
 
 </div>
 </div>

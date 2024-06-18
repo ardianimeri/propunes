@@ -39,64 +39,7 @@
             </div>
         </div>
 
-        <div class="row" id="rows">
-            <div class="col-2">
-                <div class="form-floating">                    
-                    <select id="select1" class="form-select" name="">    
-                        @foreach ($jobs as $row)                    
-                            <option value="{{ $row->id }}">{{ $row->qyteti }}</option> 
-                        @endforeach                       
-                    </select>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-floating">
-                    <select id="select1" class="form-select">
-                        <option selected disabled>Orari</option>
-                        <option>Full-Time</option>
-                        <option>Part-Time</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-floating">
-                    <select id="select1" class="form-select">
-                        <option selected disabled>Pozita</option>
-                        <option>Mitrovice</option>
-                        <option>Prizeren</option>
-                        <option>Peje</option>
-                        <option>Ferizaj</option>
-                        <option>Gjilan</option>
-                        <option>Gjakove</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-floating">
-                    <select id="select1" class="form-select">
-                        <option selected disabled>Paga</option>
-                        <option>Mitrovice</option>
-                        <option>Prizeren</option>
-                        <option>Peje</option>
-                        <option>Ferizaj</option>
-                        <option>Gjilan</option>
-                        <option>Gjakove</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-floating">
-                    <select id="select1" class="form-select">
-                        <option selected disabled>Data</option>
-                        <option>Mitrovice</option>
-                        <option>Prizeren</option>
-                        <option>Peje</option>
-                        <option>Ferizaj</option>
-                        <option>Gjilan</option>
-                        <option>Gjakove</option>
-                    </select>
-                </div>
-            </div>
+        
             <div class="col-2">
                 <div class="form-floating">
                     <form class="search" type="get" action="{{ url('/search') }}">
