@@ -34,8 +34,7 @@ Route::get('/', function () {
 Route::prefix('users')->name('users.')->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::post('/create', [UserController::class, 'create'])->name('create');
-    Route::get('/{id}/edit', [UserController::class, 'edit'])->name('edit');
-    Route::post('/{id}/update', [UserController::class, 'update'])->name('update');
+   
     Route::delete('/{id}', [UserController::class, 'delete'])->name('delete');
 });
 
@@ -124,5 +123,8 @@ Route::post('/admin/users', [AdminController::class, 'storeAdmin'])->name('admin
 
 Route::delete('/admin/jobs/{id}', [AdminController::class, 'deleteJob'])->name('admin.job.delete');
 
+Route::get('/profile/update-profile-information-form', [UserController::class, 'showUpdateProfileForm'])->name('profile.update-profile-information-form');
 
+Route::get('/profile/show/{id}', [UserController::class, 'edit'])->name('profile.show');
+Route::post('/profile/show/{id}', [UserController::class, 'update'])->name('profile.show');
 

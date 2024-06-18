@@ -244,7 +244,7 @@
                                     <label class="cv-btn" for="actual-btn">Upload ARBK Certificate</label>
 
                                     <button type="button" class="btn btn-light waves-effect"><i
-                                            class="mdi mdi-account-settings-variant mr-1" ></i><a href="edit-user-profile.html">Edito Profilin</a></button>
+                                            class="mdi mdi-account-settings-variant mr-1" ></i><a href="{{ route('profile.show', ['id' => $user->id]) }}">Edito Profilin</a></button>
                                 </div>
                             </div>
                         </div>

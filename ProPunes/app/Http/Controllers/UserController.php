@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
     
-        return view('users.update', ['user' => $user]);
+        return view('profile.show', ['user' => $user]);
     }
     
     public function update(Request $request, $id) {
