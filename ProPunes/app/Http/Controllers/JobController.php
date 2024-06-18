@@ -24,7 +24,7 @@ class JobController extends Controller
         $user = Auth::user();
         //$jobs = Job::all();
         $jobs = Job::where('user_id', $user->id)->orderBy('id','desc')->get();
-        return view('users.dashboardemployee', compact('user','jobs'));
+        return view('user.profile-employer', compact('user','jobs'));
     }
     /**
      * Show the form for creating a new resource.
@@ -74,7 +74,7 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        //
+        return view('jobs.edit', compact('job'));
     }
 
     /**
@@ -82,7 +82,21 @@ class JobController extends Controller
      */
     public function update(Request $request, Job $job)
     {
-        //
+        $request->validate([
+            'Titulli' => 'required',
+            'Pershkrimi' => 'required',
+            'Kategoria' => 'required',
+            'Lokacioni' => 'required',
+            'Orari' => 'required'
+        ]);
+
+        $job->update($request->all());
+
+        // Assign the user ID to the created job
+
+
+        //redirect ku duhet
+        return redirect()->route('jobs.index')->with('aplikimi u editua me suksess');
     }
 
     /**

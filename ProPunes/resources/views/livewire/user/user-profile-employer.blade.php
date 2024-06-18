@@ -402,136 +402,48 @@
                     </div> -->
                     <div class="jobs-positions">
                         <div class="card-box">
-                        <head>
-                        <meta name="user-id" content="{{ Auth::user()->id }}">
-                    </head>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
-                        <!-- Trigger the modal with a button -->
-                        <button type="button" style="background-color:#50C878;"class="btn btn-success my-3" data-toggle="modal" data-target="#myModal" id="open">Create</button>
-                        <form method="post" action="{{ url('jobposition') }}" id="form">
-                            @csrf
-                            <!-- Modal -->
-                            <div class="modal" tabindex="-1" role="dialog" id="myModal">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="alert alert-danger" style="display:none"></div>
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Jobs Positions</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="user_id">User ID:</label>
-                                                    <input type="number" class="form-control" name="user_id" id="user_id"
-                                                        value="{{ Auth::user()->id }}" readonly>
-                                                </div>
-                                                <div class="form-group col-md-4">
-                                                    <label for="title">Title:</label>
-                                                    <input type="text" class="form-control" name="title" id="title">
-                                                </div>
+                        <h4 class="header-title mb-3">Job Postings</h4>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Category</th>
+                                        <th>Location</th>
+                                        <th>Schedule</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($jobs as $job)
+                                    <tr>
+                                        <td>{{ $job->Titulli }}</td>
+                                        <td>{{ $job->Pershkrimi }}</td>
+                                        <td>{{ $job->Kategoria }}</td>
+                                        <td>{{ $job->Lokacioni }}</td>
+                                        <td>{{ $job->Orari }}</td>
+                                        <td>
+                                            <a href="{{ route('job.edit', ['job' => $job->id]) }}" class="btn btn-sm btn-primary">Edit</a>
+                                            <form action="{{ route('jobs.destroy', $job->id) }}" method="POST" style="display: inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
                                             </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="date">Date:</label>
-                                                    <input type="date" class="form-control" name="date" id="date">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="website">Website:</label>
-                                                    <input type="text" class="form-control" name="website" id="website">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-4">
-                                                    <label for="description">Description:</label>
-                                                    <input type="text" class="form-control" name="description" id="description">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button class="btn btn-success" id="ajaxSubmit">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <meta name="_token" content="{{ csrf_token() }}" />
-
-
-                            <script>
-                                jQuery(document).ready(function () {
-                                    jQuery('#ajaxSubmit').click(function (e) {
-                                        e.preventDefault();
-
-                                        $.ajaxSetup({
-                                            headers: {
-                                                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                                            }
-                                        });
-                                        var userId = $('meta[name="user-id"]').attr('content');
-                                        jQuery.ajax({
-                                            url: "{{ url('/jobposition') }}",
-                                            method: 'post',
-                                            data: {
-                                                user_id: userId,
-                                                title: jQuery('#title').val(),
-                                                date: jQuery('#date').val(),
-                                                website: jQuery('#website').val(),
-                                                description: jQuery('#description').val(),
-                                            },
-                                            success: function (result) {
-                                                if (result.errors) {
-                                                    jQuery('.alert-danger').html('');
-                                                    jQuery.each(result.errors, function (key, value) {
-                                                        jQuery('.alert-danger').show();
-                                                        jQuery('.alert-danger').append('<li>' + value + '</li>');
-                                                    });
-                                                } else {
-                                                    jQuery('.alert-danger').hide();
-                                                    $('#open').hide();
-                                                    $('#myModal').modal('hide');
-                                                }
-                                            },
-                                            error: function (xhr, status, error) {
-                                                if (xhr.status == 500) {
-                                                    console.log(xhr.responseText);
-                                                }
-                                            }
-                                        });
-                                    });
-                                });
-                            </script>
-                        <h4 class="header-title mt-0 mb-3">Positions</h4>
-                        @foreach ($user->jobposition as $position)
-                        <div class="">
-                            <h5 class="text-custom">{{ $position->title }}</h5>
-                                <p class="mb-0">{{ $position->website }}</p>
-                                <p class="text-muted font-13 mb-0">{{ $position->description }}
-                                </p>
-                                <div>
-                                <!-- <a href="{{ route('jobposition.edit', ['id' => $position->id]) }}" class="btn btn-primary">Edit</a> -->
-                                <head>
-            <meta name="user-id" content="{{ Auth::user()->id }}">
-
-            <form action="{{ route('jobposition.destroy', $position->id) }}" method="POST" style="display: inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-        </div>
-                            </div>
-                            <hr>
-                            @endforeach
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
                         </div>
                     </div>
                     </div>
+                    
                 </div>
                     <div class="card-box">
                         <h4 class="header-title mb-3">Aplikimet</h4>

@@ -128,3 +128,4 @@ Route::get('/profile/update-profile-information-form', [UserController::class, '
 Route::get('/profile/show/{id}', [UserController::class, 'edit'])->name('profile.show');
 Route::post('/profile/show/{id}', [UserController::class, 'update'])->name('profile.show');
 
+Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('job.edit');
