@@ -70,7 +70,7 @@
        
         <div class="description">
             <h5>Job Description</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum blanditiis id aliquam numquam sequi sint deleniti iusto placeat deserunt illo perspiciatis, quos, eaque ullam eius labore vel sunt ratione repellat?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum earum neque adipisci mollitia dignissimos ullam ex unde at quaerat sapiente eaque veritatis pariatur inventore voluptatibus debitis minus numquam, hic accusamus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero beatae aspernatur impedit maiores. Veritatis, nostrum dolor totam voluptatem, ut ratione quasi ipsum nihil iste dolores voluptates at autem fugiat sequi.</p>
+            <p>{{ $job->Pershkrimi }}</p>
         </div>
 
     </div>
@@ -85,7 +85,14 @@
         </div>
     </div>
     @elseif(Auth::user()->role == 'punedhenes')
-    
+    <div class="apliko">
+        <div class="tani">
+            <a class="btn btn-success" href="{{ route('jobs.edit', ['job' => $job->id]) }}">Edit</a>
+        </div>
+        <div class="ruaj">
+            <h5>delete</h5>
+        </div>
+    </div>
     @endif
 
 </div>
