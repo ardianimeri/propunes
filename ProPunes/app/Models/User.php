@@ -80,6 +80,6 @@ class User extends Authenticatable
     }
 
     public function applications(){
-        return $this->belongsToMany(Job::class);
+        return $this->belongsToMany(Job::class, 'job_user', 'user_id', 'job_id');
     }
 }

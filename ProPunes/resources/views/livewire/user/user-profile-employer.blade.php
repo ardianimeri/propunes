@@ -437,6 +437,41 @@
                             </table>
                         </div>
                     </div>
+                    <div class="card-box">
+                    @foreach($data as $jobData)
+        <div class="card-box">
+            <h4 class="header-title mb-3">Applicants for {{ $jobData['job']->Titulli }}</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Resume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($jobData['applicants'] as $applicant)
+                            <tr>
+                                <td>{{ $applicant->name }}</td>
+                                <td>{{ $applicant->email }}</td>
+                                <td>{{ $applicant->phone }}</td>
+                                <td>
+                                <form action="{{ route('applications.deny', ['id' => Auth::user()->id, 'applicationId' => $applicant->id]) }}" method="POST" style="display: inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Deny</button>
+                                </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endforeach
+        </div>
                     <hr>
                 </div>
             </div>

@@ -6,6 +6,7 @@ use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 
 class ApplicationController extends Controller
@@ -17,8 +18,8 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $jobs = $user->applications()->get();
+        $user = Auth::user();
+        $jobs = $user->jobs()->with('applicants')->get();
     
         if ($jobs->isEmpty()) {
             // Handle case when the user is not associated with any jobs
@@ -31,7 +32,7 @@ class ApplicationController extends Controller
             $applicants = $applicants->concat($job->applicants()->get());
         }
     
-        return view('applications.index', compact('applicants'));
+        return view('user.profile-employer', compact('applicants'));
     }
     /**
      * Show the form for creating a new resource.
@@ -103,8 +104,9 @@ class ApplicationController extends Controller
 
     public function destroyApplications($id, $applicationId)
     { 
-        $applications = User::findOrFail($id);
-        $applications->applications()->detach($applicationId);
+        $user = User::findOrFail($id);
+
+        $user->applications()->detach($applicationId);
         return Redirect::back()->with('success', 'Aplikimi u anulua me sukses');  
     }
 
@@ -116,8 +118,18 @@ class ApplicationController extends Controller
         return response()->json(['error' => 'Unauthenticated'], 401);
     }
 
-    $applications = $user->applications()->with('user')->get();
+    $applications = $user->applications()->get();
 
     return view('applications.application-show', compact('applications'));
+    }
+    public function denyApplication($id, $applicationId)
+    { 
+        // Find the user who owns the job posting (assuming you have a Job model)
+        $job = Job::where('user_id', $id)->firstOrFail();
+        
+        // Detach the application from the job posting
+        $job->applicants()->detach($applicationId);
+        
+        return redirect()->back()->with('success', 'Application denied successfully');
     }
 }

@@ -129,3 +129,5 @@ Route::get('/profile/show/{id}', [UserController::class, 'edit'])->name('profile
 Route::post('/profile/show/{id}', [UserController::class, 'update'])->name('profile.show');
 
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('job.edit');
+
+Route::delete('/users/{id}/applications/{applicationId}/deny', [ApplicationController::class, 'denyApplication'])->name('applications.deny');
