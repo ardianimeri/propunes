@@ -2,25 +2,29 @@
 
 @section('content')
 
-<style>
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
         * {
             font-family: 'Montserrat', sans-serif;
         }
 
-        body{
+        body {
             background-color: #E7F3FF;
         }
-         .contenti{
-        margin-top: 10%;
-        display: flex;
+
+        .contenti {
+            margin-top: 10%;
+            display: flex;
         }
-        .posti{
+
+        .posti {
             background-color: #fff;
             margin-right: 1%;
             border: 1px solid black;
         }
-        .tani{
+
+        .tani {
             border: 1px solid black;
             border-radius: 5%;
             width: 100%;
@@ -29,7 +33,8 @@
             padding: 2%;
             background-color: #516685;
         }
-        .ruaj{
+
+        .ruaj {
             margin-top: 10%;
             border: 1px solid black;
             border-radius: 5%;
@@ -38,56 +43,68 @@
             color: #516685;
             padding: 2%;
         }
-        .apliko{
+
+        .apliko {
             width: 100%
         }
-        .details{
-            display: flex;  
+
+        .details {
+            display: flex;
             margin: 0px 40px 0px 40px;
             justify-content: space-between;
         }
-        .details a{
+
+        .details a {
             color: #000;
             text-decoration: none;
         }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-<div class="container" style="height: 100vh;">
-<div class="contenti">
-    <div class="posti p-2">
-        
-            
-        <div class="titulli">
-            <h2>{{ $job->Titulli }}</h2>
-        </div>
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <div class="container" style="height: 100vh;">
+        <div class="contenti">
+            <div class="posti p-2">
 
-        <div class="details">
-            <a href=""><i class="bi bi-clipboard"></i>{{ $job->Kategoria}} </a>
-            <a href=""><i class="bi bi-geo-alt-fill"></i>{{ $job->Lokacioni }}</a>
-            <a href=""><i class="bi bi-clock"></i>{{ $job->Orari }}</a>
-            <a href=""><i class="bi bi-calendar-week"></i>25.05.2023</a>
-        </div>
-       
-        <div class="description">
-            <h5>Job Description</h5>
-            <p>{{ $job->Pershkrimi }}</p>
-        </div>
 
+                <div class="titulli">
+                    <h2>{{ $job->Titulli }}</h2>
+                </div>
+
+                <div class="details">
+                    <a href=""><i class="bi bi-clipboard"></i>{{ $job->Kategoria }} </a>
+                    <a href=""><i class="bi bi-geo-alt-fill"></i>{{ $job->Lokacioni }}</a>
+                    <a href=""><i class="bi bi-clock"></i>{{ $job->Orari }}</a>
+                    <a href=""><i class="bi bi-calendar-week"></i>25.05.2023</a>
+                </div>
+
+                <div class="description">
+                    <h5>Job Description</h5>
+                    <p>{{ $job->Pershkrimi }}</p>
+                </div>
+
+            </div>
+
+            @if (Auth::user()->role == 'punekerkues')
+                <div class="apliko">
+                    <div class="tani">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        <form action="{{ route('jobs.apply', $job->id) }}" method="POST">
+                            @csrf
+                            <button type="submit">Apply</button>
+                        </form>
+                    </div>
+                </div>
+            @elseif(Auth::user()->role == 'punedhenes')
+            @endif
+
+        </div>
     </div>
-    
-    @if(Auth::user()->role == 'punekerkues')
-    <div class="apliko">
-        <div class="tani">
-            <h5>Apliko tani</h5>
-        </div>
-        <div class="ruaj">
-            <h5>Ruaj aplikimin</h5>
-        </div>
-    </div>
-    @elseif(Auth::user()->role == 'punedhenes')
-    
-    @endif
-
-</div>
-</div>
 @endsection

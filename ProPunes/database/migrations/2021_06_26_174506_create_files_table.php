@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('job_user', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->string('file_name');
+            $table->binary('file_content');
+            $table->timestamps();
             $table->unsignedBigInteger('user_id')->unsigned();
-            $table->unsignedBigInteger('job_id')->unsigned();      
-            $table->unsignedBigInteger('file_id')->nullable()->unsigned();    
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_user');
+        Schema::dropIfExists('files');
     }
 };

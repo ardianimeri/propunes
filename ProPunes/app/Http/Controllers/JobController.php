@@ -114,4 +114,25 @@ class JobController extends Controller
        $jobs = Job::where('Titulli' , 'LIKE', '%'.$search_text.'%')-> get();
        return view('jobs.search', compact('jobs'));
     }
+
+public function apply(Request $request, $jobId)
+    {
+        $user = auth()->user();
+        $job = Job::findOrFail($jobId);
+        
+       
+
+        
+
+        if ($user->applications()->where('job_id', $job->id)->exists()) {
+            return redirect()->back()->with('error', 'You have already applied for this job.');
+        }
+
+        $fileId = $request->file_id; // Adjust this based on how you handle file upload
+        // Attach the job to the user via the applications relationship with file_id
+        $user->applications()->attach($jobId,  ['file_id' => $user->file->id]);
+        
+
+        return redirect()->back()->with('success', 'Application submitted successfully!');
+    }
 }

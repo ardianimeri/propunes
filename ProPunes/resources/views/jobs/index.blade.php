@@ -25,54 +25,71 @@
             margin-left: 5px;
         }
 
-        .search {
-            display: flex;
+        .table td{
+            height: 80px;
+        }
+        #job-search{
+            
         }
     </style>
 
-    <div class="container" style="height:100vh;">
-        <div class="row">
-            <div class="col-lg-12 margin-tb" style="display: flex; justify-content: space-between; margin-top: 10%; ">
-                <div class="pull-left">
-                    <h2>Aplikimet</h2>
-                </div>
-            </div>
-        </div>
 
         
-            <div class="col-2">
-                <div class="form-floating">
-                    <form class="search" type="get" action="{{ url('/search') }}">
-                        <div class="col-auto">
-                            <input type="search" name="querry" class="form-control" id="inputPassword2"
-                                placeholder="Search">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary mb-3">Search</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="container-text-center">
-            <div class="roww">
-                <div class="col">
 
-                </div>
-            </div>
-        </div>
-        @foreach ($jobs as $job)
-            <div class="container-text-center" style="border: solid 1px black; margin: 5px">
-                <div class="roww">
-                    <div class="col">
-                        <a href="{{ route('jobs.show', ['job' => $job->id]) }}">{{ $job->Titulli }}</a>
-                        <h4>{{ $job->Lokacioni }}</h4>
-
+        
+            <div class="Punët">
+                <div class="container tbl-container" style="margin-top: 10%;">
+                <h3 style="font-size:30px; ">Punët</h3>
+                <input type="text" id="job-search" placeholder="Kërko punën...">
+                    <div class="row tbl-fixed">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Emri Kompanis</th>
+                                    <th scope="col">Lokacioni</th>
+                                    <th scope="col">Pozita</th>
+                                    <th scope="col">Orari</th>
+                                    <th scope="col"></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody id="job-results">
+                                @foreach($jobs as $job)
+                                    <tr>
+                                        <td><a href="{{ route('jobs.show', ['job' => $job->id]) }}">{{ $job->Titulli }}</a></td>
+                                        <td>{{$job->Lokacioni}}</td>
+                                        <td>{{$job->Kategoria}}</td>
+                                        <td>{{ $job->Orari }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        @endforeach
 
+        <script>
+            
+            const jobSearchInput = document.getElementById('job-search');
+            const jobResults = document.getElementById('job-results');  
+    
+            jobSearchInput.addEventListener('input', () => {
+                const searchTerm = jobSearchInput.value.toLowerCase();
+                const jobs = Array.from(document.querySelectorAll('#job-results tr'));
+    
+                jobs.forEach(job => {
+                    const id = job.querySelector('td:nth-child(1)').textContent.toLowerCase();
+                    const titulli = job.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                    const lokacioni = job.querySelector('td:nth-child(3)').textContent.toLowerCase();
+    
+                    if (id.includes(searchTerm) || titulli.includes(searchTerm) || lokacioni.includes(searchTerm)) {
+                        job.style.display = 'table-row';
+                    } else {
+                        job.style.display = 'none';
+                    }
+                });
+            });
+        </script>
 
     </div>
 @endsection

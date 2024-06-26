@@ -15,6 +15,8 @@ use App\Models\Job;
 use App\Models\Location;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FileController;
+use App\Models\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,3 +133,18 @@ Route::post('/profile/show/{id}', [UserController::class, 'update'])->name('prof
 Route::get('/jobs/{job}/edit', [JobController::class, 'edit'])->name('job.edit');
 
 Route::delete('/users/{id}/applications/{applicationId}/deny', [ApplicationController::class, 'denyApplication'])->name('applications.deny');
+
+Route::post('/files', [FileController::class, 'store'])->name('files.store');
+Route::get('/files/upload', function () {
+    return view('files.upload');
+})->name('files.upload');
+
+Route::get('/files/index', function(){
+    return view('files.index');
+})->name('files.index');
+Route::get('/files', [FileController::class, 'index'])->name('files.index');
+Route::get('/files/{id}', [FileController::class, 'show'])->name('files.show');
+Route::get('/files/{id}/download', [FileController::class, 'download'])->name('files.download');
+Route::delete('/files/{id}/destroy', [FileController::class, 'destroy'])->name('files.destroy');
+
+Route::post('/jobs/{job}/apply', [JobController::class, 'apply'])->name('jobs.apply');

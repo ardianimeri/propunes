@@ -82,4 +82,9 @@ class User extends Authenticatable
     public function applications(){
         return $this->belongsToMany(Job::class, 'job_user', 'user_id', 'job_id');
     }
+
+    public function file(){
+        return $this->hasOne(File::class)->latest();
+    }
+    
 }

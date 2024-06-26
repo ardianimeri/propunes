@@ -23,6 +23,7 @@ class Job extends Model
     }
 
     public function applicants(){
-        return $this->belongsToMany(User::class,'job_user', 'job_id', 'user_id');
+        return $this->belongsToMany(User::class,'job_user', 'job_id', 'user_id')->withPivot('file_id');
     }
+
 }
