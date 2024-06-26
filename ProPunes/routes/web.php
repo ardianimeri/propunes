@@ -72,7 +72,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
             return view('users.dashboardemployee' , ['applications'=>$applications]);
         })->name('users.dashboardemployee');
     Route::get('/user/profile', UserProfileComponent::class)->name('user.profile');
-    Route::get('/user/profile', JobsPositionProfile::class)->name('user.profile');
+    
     });
     Route::middleware(['role:punedhenes'])->group(function(){
         Route::get('/users/dashboardemployer', function () {

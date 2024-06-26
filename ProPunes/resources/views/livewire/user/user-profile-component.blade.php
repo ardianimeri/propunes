@@ -406,6 +406,30 @@
                     <!-- end row -->
                     <div class="jobs-positions">
                         <div class="card-box">
+                        <h3>Applications:</h3>
+    @if ($applications->isEmpty())
+        <p>No applications found.</p>
+    @else
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Application ID</th>
+                    <th>Job Title</th>
+                    <!-- Add more table headers as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($applications as $application)
+                    <tr>
+                        <td>{{ $application->id }}</td>
+                        <td>{{ $application->Titulli }}</td>
+                        <!-- Adjust the date format as needed -->
+                        <!-- Add more table cells for additional data -->
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
                         <head>
                         <meta name="user-id" content="{{ Auth::user()->id }}">
                     </head>

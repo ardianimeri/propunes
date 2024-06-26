@@ -8,9 +8,16 @@ use Livewire\Component;
 
 class UserProfileComponent extends Component
 {
+    public $user;
+    public $applications;
+
+    public function mount()
+    {
+        $this->user = Auth::user();
+        $this->applications = $this->user->applications()->with('applicants')->get();
+    }
     public function render()
     {
-        $user = User::find(Auth::user()->id);
-        return view('livewire.user.user-profile-component', ['user'=>$user])->layout('layouts.front');
+        return view('livewire.user.user-profile-component',['user' =>$this->user, 'applications' => $this->applications])->layout('layouts.front');
     }
 }

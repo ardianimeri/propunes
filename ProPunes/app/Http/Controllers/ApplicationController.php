@@ -120,7 +120,7 @@ class ApplicationController extends Controller
 
     $applications = $user->applications()->get();
 
-    return view('applications.application-show', compact('applications'));
+    return view('user.profile-employer', compact('applications'));
     }
     public function denyApplication($id, $applicationId)
     { 
