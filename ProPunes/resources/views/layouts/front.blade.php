@@ -105,7 +105,7 @@
                     @if (Auth::user()->role == 'punekerkues')
                     @elseif(Auth::user()->role == 'punedhenes')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/jobs/create') }}">Services</a>
+                            <a class="nav-link" href="{{ url('/jobs/create') }}">AddJobs</a>
                         </li>
                     @endif
                         <li class="nav-item">

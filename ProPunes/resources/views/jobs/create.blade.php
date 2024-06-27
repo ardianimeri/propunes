@@ -1,3 +1,4 @@
+
 @extends('layouts.front')
 
 @section('content')
@@ -33,31 +34,47 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Titulli</strong>
-                        <input type="text" name="Titulli" class="form-control" placeholder="titulli">
+                        <input type="text" name="Titulli" class="form-control capitalize-first" placeholder="titulli">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Pershkrimi</strong>
-                        <input type="text" class="form-control" style="height: 150px" name="Pershkrimi" placeholder="pershkrimi">
+                        <input type="text" class="form-control capitalize-first" style="height: 150px" name="Pershkrimi" placeholder="pershkrimi">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Kategoria</strong>
-                        <input type="text" class="form-control" name="Kategoria" placeholder="kategoria">
+                        <input type="text" class="form-control capitalize-first" name="Kategoria" placeholder="kategoria">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Lokacioni</strong>
-                        <input type="text" class="form-control" name="Lokacioni" placeholder="lokacioni">
+                        <div class="input-group">
+                            <select class="form-control capitalize-first" id="Lokacioni" name="Lokacioni">
+                                <option value="Prishtine">Ferizaj</option>
+                                <option value="Mitrovicë">Mitrovicë</option>
+                                <option value="Pejë">Pejë</option>
+                                <option value="Prizren">Prizren</option>
+                                <option value="Ferizaj">Ferizaj</option>
+                                <option value="Gjilan">Gjilan</option>
+                                <option value="Gjakovë">Gjakovë</option>
+
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Orari</strong>
-                        <input type="text" class="form-control" name="Orari" placeholder="orari">
+                        <div class="input-group">
+                            <select class="form-control capitalize-first" id="Orari" name="Orari">
+                                <option value="part-time">Part Time</option>
+                                <option value="full-time">Full Time</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 
@@ -75,8 +92,9 @@
             border-radius: 18px;
             padding: 17px;
             margin: auto;
-            height: 612px;
+            height: 70vh;
             margin-top: 1%;
+            margin-bottom: 30px;
             position: relative;
         }
 
@@ -92,5 +110,9 @@
             position: relative;
             margin-left: 18%;
         }
+        .capitalize-first { 
+            text-transform: capitalize; 
+        }
+
     </style>
 @endsection
