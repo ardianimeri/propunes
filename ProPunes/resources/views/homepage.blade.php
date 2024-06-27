@@ -73,6 +73,9 @@
 }
 #services{
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #services h2{
@@ -190,7 +193,7 @@ button {
         <div class="col-md-6 p-0">
             <div class="rightside d-flex justify-content-center align-items-center">
                 <div class="imagewrapper">
-                    <img src="images/asd.jpg">
+                    <img src="images/homepage1.png">
                 </div>
             </div>
         </div>
@@ -233,7 +236,7 @@ button {
                 <div class="about-text">
                     <h2>Ne ofrojmë mundësi të shumta<br>
                     Për <b>JU</b></h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam, labore reiciendis. Assumenda eos quod animi! Soluta nesciunt inventore dolores excepturi provident, culpa beatae tempora, explicabo corporis quibusdam corrupti. Autem, quaerat. Assumenda quo aliquam vel, nostrum explicabo ipsum dolor, ipsa perferendis porro doloribus obcaecati placeat natus iste odio est non earum?</p>
+                    <p>Në platformën tonë për kërkim të punës, ju ofrojmë një gamë të gjerë mundësish për të gjetur pozicionin e përshtatshëm për ju. Me mijëra oferta të përditësuara nga kompani të ndryshme dhe mjete të avancuara për kërkim, ne e bëjmë të lehtë dhe të shpejtë për ju që të gjeni punën e ëndrrave tuaja. Bashkohuni me ne dhe shfrytëzoni mundësitë e pafundme për të ndërtuar një karrierë të suksesshme.</p>
                     <a class="btn btn-warning" href="#contact">Learn More</a>
                 </div>
             </div>
@@ -288,43 +291,4 @@ button {
         </div>
     </div>
 </section>
-@endsection<!-- services section Ends -->
-<!-- Contact starts -->
-<!--<section id="contact" class="contact section-padding">
-    <div>
-    <div class="container mt-5 mb-5">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-header text-center pb-5">
-                    <h2>Contact Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur <br>adipisicing elit. Non, quo.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row m-0">
-            <div class="col-md-12 p-0 pt-4 pb-4">
-                <form action="#" class="bg-transparent p-4 m-auto">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <input class="form-control" placeholder="Full Name" required="" type="text">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <input class="form-control" placeholder="Email" required="" type="email">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <textarea class="form-control" placeholder="Message" required="" rows="3"></textarea>
-                            </div>
-                        </div><button class="btn btn-warning btn-lg btn-block mt-3" type="button">Send Now</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-  </section>-->
-<!-- footer starts -->	
+@endsection

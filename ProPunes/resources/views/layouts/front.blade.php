@@ -116,17 +116,10 @@
                     </li>
                     @if (Route::has('login'))
                         @auth
-                            @if (Auth::user()->role == 'punekerkues')
+                            @if (Auth::user()->role == 'admin')
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page"
-                                        href="{{ route('users.dashboardemployee') }}">Dashboard</a>
-                                @elseif(Auth::user()->role == 'admin')
-                                    <a class="nav-link" aria-current="page"
-                                        href="{{ route('users.dashboardadmin') }}">Dashboard</a>
-                                @elseif(Auth::user()->role == 'punedhenes')
-                                    <a class="nav-link" aria-current="page"
-                                        href="{{ route('users.dashboardemployer') }}">Dashboard</a>
-                                </li>
+                                <a class="nav-link" aria-current="page"
+                                    href="{{ route('users.dashboardadmin') }}">Dashboard</a>
                             @endif
                         @else
                             <li class="nav-item">
