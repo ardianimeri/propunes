@@ -260,6 +260,12 @@
                                         </span></p>
                                     <p class="text-muted font-13"><strong>Location :</strong> <span
                                             class="m-l-15">{{ $user->location }}</span></p>
+                                            @if ($user->file)
+                                        <a class="text-muted font-13"
+                                        href="{{ route('files.download', $user->file->id) }}"><strong>ARBK Certificate: {{ $user->file->file_name}}</strong></a>
+                                        @else
+                                        <span class="text-muted font-13"><strong>No ARBK Certificate uploaded</strong></span>
+                                        @endif
                                 </div>
                                 <ul class="social-links list-inline mt-4 mb-0">
                                     <li class="list-inline-item"><a title="" data-placement="top"
