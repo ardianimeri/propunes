@@ -192,9 +192,7 @@
                 <div class="col-sm-12 ">
                     <div class="profile-user-box card-box bg-custom">
                         <div class="row">
-                            <div class="col-sm-6"><span class="float-left mr-3"><img
-                                        src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                                        class="thumb-lg rounded-circle"></span>
+                            <div class="col-sm-6">
                                 <div class="media-body text-white">
                                     <h4 class="mt-1 mb-1 font-18">{{ Auth::user()->name }}</h4>
                                     <p class="font-13 text-light">{{ $user->profession }}</p>
