@@ -48,10 +48,7 @@ class FileController extends Controller
             $fileModel->user_id = auth()->id();
             $fileModel->save();
 
-            return response()->json([
-                'file_name' => $fileName,
-                'message' => 'File uploaded successfully.'
-            ]);
+            return back()->with('success', 'File has been uploaded successfully.');
         }
 
         return back()->withErrors(['file' => 'Please select a file to upload.']);

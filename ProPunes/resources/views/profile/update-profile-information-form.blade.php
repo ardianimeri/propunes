@@ -140,7 +140,7 @@
                 @endif
             @endif
         </div>
-        <div class="col-span-6 sm:col-span-4">
+        <!-- <div class="col-span-6 sm:col-span-4">
             <x-label for="role" :value="__('Role')" />
             <select id="role" name="role" class="mt-1 block w-full" wire:model.defer="state.role" autocomplete="role">
                 <option value="punedhenes">Punedhenes</option>
@@ -149,7 +149,7 @@
             @error('role')
                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
             @enderror
-        </div>
+        </div> -->
     </x-slot>
 
     <x-slot name="actions">

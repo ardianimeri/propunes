@@ -8,7 +8,11 @@
                 background-color: #f3f6f8;
                 margin-top: 20px;
             }
-
+            a {
+                color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+                 /* text-decoration: underline; */
+                text-decoration: none;
+            }
             .thumb-lg {
                 height: 88px;
                 width: 88px;
@@ -34,7 +38,11 @@
                 margin-bottom: 30px;
                 background-color: #fff;
             }
-
+            .col-sm-12 {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-top: 4rem;
+            }
             .inbox-widget .inbox-item img {
                 width: 40px;
             }
@@ -173,64 +181,15 @@
             }
         </style>
 
-        <div class="row no-gutters" id="home">
-            <div class="col-md-6 p-0">
-                <div class="rightside d-flex justify-content-center align-items-center">
-                    <div class="imagewrapper">
-                        <!-- <img src="images/asd.jpg"> -->
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </div><!-- about section starts -->
-
-    <!-- services section Starts -->
-    <!-- services section Ends -->
-    <!-- Contact starts -->
-    <!--<section id="contact" class="contact section-padding">
-        <div>
-        <div class="container mt-5 mb-5">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-header text-center pb-5">
-                        <h2>Contact Us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur <br>adipisicing elit. Non, quo.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row m-0">
-                <div class="col-md-12 p-0 pt-4 pb-4">
-                    <form action="#" class="bg-transparent p-4 m-auto">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <input class="form-control" placeholder="Full Name" required="" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <input class="form-control" placeholder="Email" required="" type="email">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Message" required="" rows="3"></textarea>
-                                </div>
-                            </div><button class="btn btn-warning btn-lg btn-block mt-3" type="button">Send Now</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
-      </section>-->
-    <!-- footer starts -->
 
     <div class="content">
         <div class="container">
+            
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12 ">
                     <!-- meta -->
                     <div class="profile-user-box card-box bg-custom">
                         <div class="row">
@@ -254,7 +213,17 @@
                                         <input class="btn btn-primary" type="submit" value="Submit"
                                             style="height: fit-content">
                                     </form>
-
+                                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                        @if (session('file'))
+                    <div class="alert alert-info">
+                        <p>File Uploaded: {{ session('file')->file_name }}</p>
+                        <p><a href="{{ asset('storage/' . session('file')->file_path) }}" target="_blank">View File</a></p>
+                    </div>
+                @endif
                                     <button type="button" class="btn btn-light waves-effect"><i
                                             class="mdi mdi-account-settings-variant mr-1"></i><a
                                             href="{{ route('profile.show', ['id' => $user->id]) }}">Edito
@@ -305,95 +274,7 @@
                         </div>
                     </div>
                     <!-- Personal-Information -->
-                    <div class="card-box ribbon-box">
-                        <div class="ribbon ribbon-primary">Mesazhet</div>
-                        <div class="clearfix"></div>
-                        <div class="inbox-widget">
-                            <a href="#">
-                                <div class="inbox-item">
-                                    <div class="inbox-item-img"><img
-                                            src="https://bootdey.com/img/Content/avatar/avatar2.png"
-                                            class="rounded-circle" alt=""></div>
-                                    <p class="inbox-item-author">Dua.com</p>
-                                    <p class="inbox-item-text">Pershendetje, nese jeni i interesuar na nevojitet nje
-                                        ethical hacker.</p>
-                                    <p class="inbox-item-date">
-                                        <button type="button"
-                                            class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="inbox-item">
-                                    <div class="inbox-item-img"><img
-                                            src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                                            class="rounded-circle" alt=""></div>
-                                    <p class="inbox-item-author">Google.com</p>
-                                    <p class="inbox-item-text">Hi, We would love to have you in our team?</p>
-                                    <p class="inbox-item-date">
-                                        <button type="button"
-                                            class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="inbox-item">
-                                    <div class="inbox-item-img"><img
-                                            src="https://bootdey.com/img/Content/avatar/avatar4.png"
-                                            class="rounded-circle" alt=""></div>
-                                    <p class="inbox-item-author">Kurafire</p>
-                                    <p class="inbox-item-text">Kjo pune me pelqen, si mund te aplikoj?</p>
-                                    <p class="inbox-item-date">
-                                        <button type="button"
-                                            class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                    </p>
-                                </div>
-                            </a>
-                            <a href="#">
-                                <div class="inbox-item">
-                                    <div class="inbox-item-img"><img
-                                            src="https://bootdey.com/img/Content/avatar/avatar5.png"
-                                            class="rounded-circle" alt=""></div>
-                                    <p class="inbox-item-author">Shahedk</p>
-                                    <p class="inbox-item-text">Pershendetje, deshiroj te ju bej nje pyetje?</p>
-                                    <p class="inbox-item-date">
-                                        <button type="button"
-                                            class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                    </p>
-                                </div>
-                            </a>
-                            <!-- <a href="#">
-                                    <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="rounded-circle" alt=""></div>
-                                        <p class="inbox-item-author">Adhamdannaway</p>
-                                        <p class="inbox-item-text">This theme is awesome!</p>
-                                        <p class="inbox-item-date">
-                                            <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle" alt=""></div>
-                                        <p class="inbox-item-author">Tomaslau</p>
-                                        <p class="inbox-item-text">I've finished it! See you so...</p>
-                                        <p class="inbox-item-date">
-                                            <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                        </p>
-                                    </div>
-                                </a>
-                                <a href="#">
-                                    <div class="inbox-item">
-                                        <div class="inbox-item-img"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle" alt=""></div>
-                                        <p class="inbox-item-author">Stillnotdavid</p>
-                                        <p class="inbox-item-text">This theme is awesome!</p>
-                                        <p class="inbox-item-date">
-                                            <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-success">Reply</button>
-                                        </p>
-                                    </div>
-                                </a> -->
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="col-xl-8">
                     <div class="row">
@@ -449,7 +330,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="btn btn-sm btn-danger">Deny</button>
+                                                            class="btn btn-sm btn-danger">Cancel</button>
                                                     </form>
                                                 </td>
                                                 <!-- Adjust the date format as needed -->
@@ -467,11 +348,10 @@
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
                             <!-- Trigger the modal with a button -->
-                            <button type="button" style="background-color:#50C878;"class="btn btn-success my-3"
+                            <!-- <button type="button" style="background-color:#50C878;"class="btn btn-success my-3"
                                 data-toggle="modal" data-target="#myModal" id="open">Create</button>
-                            <form method="post" action="{{ url('jobposition') }}" id="form">
-                                @csrf
-                                <!-- Modal -->
+                            <form method="post" action="{{ url('jobposition') }}" id="form"> -->
+                                <!-- @csrf
                                 <div class="modal" tabindex="-1" role="dialog" id="myModal">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -527,7 +407,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <meta name="_token" content="{{ csrf_token() }}" />
+                            <meta name="_token" content="{{ csrf_token() }}" /> -->
 
 
                             <script>
@@ -574,8 +454,8 @@
                                     });
                                 });
                             </script>
-                            <h4 class="header-title mt-0 mb-3">Klientet</h4>
-                            @foreach ($user->jobposition as $position)
+                            <!-- <h4 class="header-title mt-0 mb-3">Klientet</h4> -->
+                            <!-- @foreach ($user->jobposition as $position)
                                 <div class="">
                                     <h5 class="text-custom">{{ $position->title }}</h5>
                                     <p class="mb-0">{{ $position->website }}</p>
@@ -596,59 +476,11 @@
                                     </div>
                                 </div>
                                 <hr>
-                            @endforeach
+                            @endforeach -->
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-box">
-                <h4 class="header-title mb-3">Aplikimet</h4>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Kompania</th>
-                                <th>Pozita</th>
-                                <th>Paga</th>
-                                <th>Lokacioni</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Gjirafa Video</td>
-                                <td>Pentester</td>
-                                <td>$1,200</td>
-                                <td>Online</td>
-                            </tr>
-                            <tr>
-                                <td>Google</td>
-                                <td>Bug Hunter</td>
-                                <td>$134,000</td>
-                                <td>New York</td>
-                            </tr>
-                            <tr>
-                                <td>Interex</td>
-                                <td>Testues</td>
-                                <td>$800</td>
-                                <td>Prishtine</td>
-                            </tr>
-                            <!-- <tr>
-                                            <td>CISCO</td>
-                                            <td>Rrjeta Kompjuterike</td>
-                                            <td>6 muaj</td>
-                                            <td>Po</td>
-                                        </tr> -->
-                            <!-- <tr>
-                                            <td>5</td>
-                                            <td>Adminox Admin</td>
-                                            <td>01/01/2015</td>
-                                            <td>07/05/2015</td>
-                                            <td><span class="label label-warning">Coming soon</span></td>
-                                            <td>Coderthemes</td>
-                                        </tr> -->
-                        </tbody>
-                    </table>
-                </div>
+            
             </div>
         </div>
         <!-- end col -->
