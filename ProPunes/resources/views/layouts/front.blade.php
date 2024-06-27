@@ -87,7 +87,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <span class="text-success"><b>PRO</b></span>PUNES</a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
@@ -97,7 +97,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ url('/jobs/read') }}">About</a>
@@ -108,12 +108,19 @@
                             <a class="nav-link" href="{{ url('/jobs/create') }}">Services</a>
                         </li>
                     @endif
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('jobs.store') }}">Jobs</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
+                        </li>
+                    @if (Auth::user()->role == 'punekerkues')
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('jobs.store') }}">Jobs</a>
+                        </li>
+                    @elseif(Auth::user()->role == 'punedhenes')
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('jobs.store') }}">Jobs</a>
+                        </li>
+                    @elseif(Auth::user()->role == 'admin')
+                    @endif
                     @if (Route::has('login'))
                         @auth
                             @if (Auth::user()->role == 'admin')
