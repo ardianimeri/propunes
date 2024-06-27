@@ -86,18 +86,26 @@
         </form>
     </div>
     <style>
+        body {
+            overflow-y: auto; /* Enable vertical scrolling for the entire body */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+        }
         .shto {
             width: 65%;
             border: solid 1px black;
             border-radius: 18px;
             padding: 17px;
             margin: auto;
-            height: 70vh;
-            margin-top: 1%;
-            margin-bottom: 30px;
+            max-height: 70vh; /* Set maximum height if necessary */
             position: relative;
+            margin-bottom: 30px;
         }
-
+        @media (max-width: 768px) {
+            .shto {
+                width: 90%; /* Adjust width for smaller screens */
+            }
+        }
         .col-md-12 {
             margin: 1%;
         }
