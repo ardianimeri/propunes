@@ -99,18 +99,13 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url('/jobs/read') }}">About</a>
-                    </li>
                     @if (Auth::user()->role == 'punekerkues')
                     @elseif(Auth::user()->role == 'punedhenes')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/jobs/create') }}">AddJobs</a>
                         </li>
                     @endif
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#contact">Contact</a>
-                        </li>
+
                     @if (Auth::user()->role == 'punekerkues')
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ route('jobs.store') }}">Jobs</a>
