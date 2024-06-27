@@ -7,73 +7,130 @@
 
         * {
             font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
         }
 
         body {
-            background-color: #E7F3FF;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .showcontainer {
+            margin-top: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .contenti {
-            margin-top: 10%;
-            display: flex;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .posti {
             background-color: #fff;
-            margin-right: 1%;
-            border: 1px solid black;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .tani {
-            border: 1px solid black;
-            border-radius: 5%;
-            width: 100%;
+        .titulli {
             text-align: center;
-            color: #fff;
-            padding: 2%;
-            background-color: #516685;
+            margin-bottom: 20px;
         }
 
-        .ruaj {
-            margin-top: 10%;
-            border: 1px solid black;
-            border-radius: 5%;
-            width: 100%;
-            text-align: center;
-            color: #516685;
-            padding: 2%;
-        }
-
-        .apliko {
-            width: 100%
+        .titulli h2 {
+            font-size: 2.5rem;
+            color: #333;
         }
 
         .details {
             display: flex;
-            margin: 0px 40px 0px 40px;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
 
-        .details a {
-            color: #000;
-            text-decoration: none;
+        .details > div {
+            margin-bottom: 10px;
+        }
+
+        .details i {
+            margin-right: 5px;
+            font-size: 1.2rem;
+        }
+
+        .description {
+            margin: 20px 0;
+        }
+
+        .description h5 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+            text-align:center;
+        }
+
+        .description p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #666;
+            margin-left: 5em;
+            margin-right: 5em;
+        }
+
+        .apliko {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .tani button {
+            background-color: #516685;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .tani button:hover {
+            background-color: #405373;
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .contenti {
+                width: 95%;
+                margin-top:3rem;
+            }
         }
     </style>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <div class="container" style="height: 100vh;">
+
+    <div class="showcontainer">
         <div class="contenti">
             <div class="posti p-2">
-
 
                 <div class="titulli">
                     <h2>{{ $job->Titulli }}</h2>
                 </div>
 
                 <div class="details">
-                    <a href=""><i class="bi bi-clipboard"></i>{{ $job->Kategoria }} </a>
-                    <a href=""><i class="bi bi-geo-alt-fill"></i>{{ $job->Lokacioni }}</a>
-                    <a href=""><i class="bi bi-clock"></i>{{ $job->Orari }}</a>
-                    <a href=""><i class="bi bi-calendar-week"></i>25.05.2023</a>
+                    <div><i class="bi bi-clipboard"></i>{{ $job->Kategoria }}</div>
+                    <div><i class="bi bi-geo-alt-fill"></i>{{ $job->Lokacioni }}</div>
+                    <div><i class="bi bi-clock"></i>{{ $job->Orari }}</div>
+                    <div><i class="bi bi-calendar-week"></i>{{ $job->created_at->format('d.m.Y') }}</div>
                 </div>
 
                 <div class="description">
@@ -107,4 +164,5 @@
 
         </div>
     </div>
+
 @endsection
