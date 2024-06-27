@@ -30,7 +30,7 @@ class FileController extends Controller
 
         $existingFile = File::where('user_id', Auth::id())->first();
         if ($existingFile) {
-            return back()->withErrors(['file' => 'You have already uploaded a file.']);
+            return back()->with('message', 'You have already uploaded a file.');
         }
 
         // Handle the file upload
@@ -51,7 +51,7 @@ class FileController extends Controller
             return back()->with('success', 'File has been uploaded successfully.');
         }
 
-        return back()->withErrors(['file' => 'Please select a file to upload.']);
+        return redirect()->back()->with('error', 'No file uploaded.');
     }
 
     public function show($id)

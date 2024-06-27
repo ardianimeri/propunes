@@ -213,7 +213,16 @@
                                             <input class="btn btn-primary" type="submit" value="Submit"
                                                 style="height: fit-content">
                                         </form>
-
+                                        @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
+                    @if (session('message'))
+                                    <div class="alert alert-warning">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
 
 
                                         <button type="button" class="btn btn-light waves-effect"><i

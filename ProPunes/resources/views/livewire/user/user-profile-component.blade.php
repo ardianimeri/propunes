@@ -218,6 +218,11 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if (session('message'))
+                                    <div class="alert alert-warning">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
                         @if (session('file'))
                     <div class="alert alert-info">
                         <p>File Uploaded: {{ session('file')->file_name }}</p>
