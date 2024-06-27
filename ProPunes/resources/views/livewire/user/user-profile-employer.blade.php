@@ -36,6 +36,12 @@
                     background-color: #fff;
                 }
 
+                .col-sm-12 {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-top: 4rem;
+                }
+
                 .inbox-widget .inbox-item img {
                     width: 40px;
                 }
@@ -173,16 +179,7 @@
                 }
             </style>
 
-            <div class="row no-gutters" id="home">
-                <div class="col-md-6 p-0">
-                    <div class="rightside d-flex justify-content-center align-items-center">
-                        <div class="imagewrapper">
-                            <!-- <img src="images/asd.jpg"> -->
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            
         </div><!-- about section starts -->
 
 
