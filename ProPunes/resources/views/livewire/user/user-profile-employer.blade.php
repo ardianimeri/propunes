@@ -285,6 +285,7 @@
                             <div class="card-box">
                                 <h4 class="header-title mb-3">Job Postings</h4>
                                 <div class="table-responsive">
+                                @if (count($jobs) > 0)
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -319,6 +320,9 @@
                                 @endforeach
                                 </tbody>
                                 </table>
+                                @else
+                                <p>No job postings found</p>
+                                @endif
                             </div>
                         </div>
                         <div class="card-box">
@@ -326,6 +330,7 @@
                                 <div class="card-box">
                                     <h4 class="header-title mb-3">Applicants for {{ $jobData['job']->Titulli }}</h4>
                                     <div class="table-responsive">
+                                    @if (count($jobData['applicants']) > 0)
                                         <table class="table">
                                             <thead>
                                                 <tr>
@@ -358,6 +363,9 @@
                                                     </tr>
                                                 @endforeach
                                             </tbody>
+                                            @else
+                                            <p>No applicants found</p>
+                                            @endif
                                         </table>
                                     </div>
                                 </div>
